@@ -1,0 +1,69 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+ */
+
+ html, body, h1, h2, h3, h4, h5, h6, img, p, div {
+  padding: none;
+  margin: none;
+  font-family: helvetica;
+ }
+body {
+  background-image: url('/assets/bg.png');
+}
+ @import 'home.css.scss';
+ @import 'colorkey.scss';
+
+
+.header {
+  width: 100%;
+  height: 120px;
+  background-image: url('/assets/med_dotted.png');
+  border-bottom: 1px $lightgray solid;
+  display: inline-block;
+  position: relative;
+  img {
+    padding-left: 10px;
+    height: 40px;
+  }
+  h3 {
+  display: inline-block;
+  line-height: 0px;
+  }
+  .userInfo {
+    position: absolute;
+    right: 10px;
+    top: 15px;
+  }
+}
+
+.headerBody, .footerBody {
+    width: 900px;
+      margin: 0px auto;
+      position: relative;
+  }
+
+#yield {
+  width: 900px;
+  min-height: 600px;
+  margin: 20px auto;
+
+}
+
+.footer {
+  width: 100%;
+  position: absolute;
+  bottom: 0px;
+  height: 40px;
+  background-color: whitesmoke;
+  border-top: 1px gray solid;
+}
