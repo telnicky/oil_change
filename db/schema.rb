@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -20,8 +19,8 @@ ActiveRecord::Schema.define(:version => 20120921172009) do
     t.time     "scheduled_end_time"
     t.datetime "created_at",              :null => false
     t.datetime "updated_at",              :null => false
-    t.string   "owner_notes"
-    t.string   "mechanic_notes"
+    t.text     "owner_notes"
+    t.text     "mechanic_notes"
     t.string   "status"
     t.time     "availability_start_time"
     t.time     "availability_end_time"
@@ -56,7 +55,7 @@ ActiveRecord::Schema.define(:version => 20120921172009) do
     t.datetime "updated_at",    :null => false
     t.string   "license_plate"
     t.string   "vin_number"
-    t.string   "notes"
+    t.text     "notes"
   end
 
 end

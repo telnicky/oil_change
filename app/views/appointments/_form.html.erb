@@ -29,6 +29,34 @@
       </div>
     </div>
     
+    <div class="control-group">
+      <%= f.label :owner_notes, :class => "control-label" %>
+      <div class="controls">
+        <%= f.text_area :owner_notes %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :mechanic_notes, :class => "control-label" %>
+      <div class="controls">
+        <%= f.text_area :mechanic_notes %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :availability_start_time, :class => "control-label" %>
+      <div class="controls">
+        <%= f.text_field :availability_start_time %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :availability_end_time, :class => "control-label" %>
+      <div class="controls">
+        <%= f.text_field :availability_end_time %>
+      </div>
+    </div>
+
     <div class="form-actions">
       <%= f.submit :class => "btn btn-primary" %>
     </div>
