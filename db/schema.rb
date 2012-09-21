@@ -1,3 +1,4 @@
+# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -10,15 +11,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120920184320) do
+ActiveRecord::Schema.define(:version => 20120921172009) do
 
   create_table "appointments", :force => true do |t|
     t.string   "location"
     t.date     "scheduled_date"
     t.time     "scheduled_start_time"
     t.time     "scheduled_end_time"
-    t.datetime "created_at",           :null => false
-    t.datetime "updated_at",           :null => false
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
+    t.string   "owner_notes"
+    t.string   "mechanic_notes"
+    t.string   "status"
+    t.time     "availability_start_time"
+    t.time     "availability_end_time"
   end
 
   create_table "mechanics", :force => true do |t|
@@ -46,8 +52,11 @@ ActiveRecord::Schema.define(:version => 20120920184320) do
     t.string   "model"
     t.integer  "year"
     t.string   "oil_type"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.string   "license_plate"
+    t.string   "vin_number"
+    t.string   "notes"
   end
 
 end
