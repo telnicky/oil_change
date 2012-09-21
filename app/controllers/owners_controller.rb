@@ -1,4 +1,5 @@
 class OwnersController < ApplicationController
+  respond_to :html
   
   def create
     @owner = Owner.new(params[:owner])
@@ -20,12 +21,11 @@ class OwnersController < ApplicationController
   end
 
   def new
-binding.pry
     @owner = Owner.new
   end
 
   def show
-    @owner = Owner.new(params[:id])
+    @owner = Owner.find(params[:id])
   end
 
   def update
