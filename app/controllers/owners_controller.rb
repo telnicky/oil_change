@@ -20,6 +20,7 @@ class OwnersController < ApplicationController
   end
 
   def new
+binding.pry
     @owner = Owner.new
   end
 
