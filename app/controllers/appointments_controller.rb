@@ -1,5 +1,6 @@
 class AppointmentsController < ApplicationController
-
+  respond_to :html
+  
   def create
     @appointment = Appointment.new(params[:appointment])
     @appointment.save!
@@ -24,7 +25,7 @@ class AppointmentsController < ApplicationController
   end
 
   def show
-    @appointment = Appointment.new(params[:id])
+    @appointment = Appointment.find(params[:id])
   end
 
   def update

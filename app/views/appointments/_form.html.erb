@@ -1,0 +1,37 @@
+<%= form_for(@appointment, :html => {:class => "form-horizontal"}) do |f| %>
+  <fieldset>
+  
+    <div class="control-group">
+      <%= f.label :location, :class => "control-label" %>
+      <div class="controls">
+        <%= f.text_field :location %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :scheduled_date, :class => "control-label" %>
+      <div class="controls">
+        <%= f.text_field :scheduled_date %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :scheduled_start_time, :class => "control-label" %>
+      <div class="controls">
+        <%= f.text_field :scheduled_start_time %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :scheduled_end_time, :class => "control-label" %>
+      <div class="controls">
+        <%= f.text_field :scheduled_end_time %>
+      </div>
+    </div>
+    
+    <div class="form-actions">
+      <%= f.submit :class => "btn btn-primary" %>
+    </div>
+  
+  </fieldset>
+<% end %>

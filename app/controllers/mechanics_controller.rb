@@ -1,4 +1,5 @@
 class MechanicsController < ApplicationController
+  respond_to :html
 
   def create
     @mechanic = Mechanic.new(params[:mechanic])
@@ -24,7 +25,7 @@ class MechanicsController < ApplicationController
   end
 
   def show
-    @mechanic = Mechanic.new(params[:id])
+    @mechanic = Mechanic.find(params[:id])
   end
 
   def update

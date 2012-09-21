@@ -1,8 +1,7 @@
 OilChange::Application.routes.draw do
   
-  resources :owners
   get "home/index"
-  #resources :appointments, :mechanics, :owners, :vehicles
+  resources :appointments, :mechanics, :owners, :vehicles
 
 
   # The priority is based upon order of creation:

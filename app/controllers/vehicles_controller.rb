@@ -1,4 +1,6 @@
 class VehiclesController < ApplicationController
+  respond_to :html
+
   def create
     @vehicle = Vehicle.new(params[:vehicle])
     @vehicle.save!
@@ -23,7 +25,7 @@ class VehiclesController < ApplicationController
   end
 
   def show
-    @vehicle = Vehicle.new(params[:id])
+    @vehicle = Vehicle.find(params[:id])
   end
 
   def update
