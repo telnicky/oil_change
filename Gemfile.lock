@@ -46,6 +46,8 @@ GEM
     eventually (0.1.1)
     execjs (1.4.0)
       multi_json (~> 1.0)
+    faker (1.1.2)
+      i18n (~> 0.5)
     ffi (1.1.5)
     ffi-rzmq (0.9.6)
       ffi
@@ -162,6 +164,7 @@ PLATFORMS
 
 DEPENDENCIES
   coffee-rails (~> 3.2.1)
+  faker
   jquery-rails
   json
   protobuf-rspec
