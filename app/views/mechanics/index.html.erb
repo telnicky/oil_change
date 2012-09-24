@@ -1,1 +1,10 @@
-index.html.erb
+<table class='table'>
+  <tbody>
+  <% @mechanics.each do |mech| %>  
+    <tr>
+      <td><%= mech.company_name %></td>
+      <td><%=link_to('show', mechanic_path(mech.id)) %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

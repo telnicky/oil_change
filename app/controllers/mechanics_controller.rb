@@ -26,7 +26,7 @@ class MechanicsController < ApplicationController
 
   def show
     @mechanic = Mechanic.find(params[:id])
-    @available_appointments = Appointment.find_by_status(Appointment::STATUS[1])
+    @available_appointments = Appointment.find_all_by_status(Appointment::STATUS[1])
   end
 
   def update

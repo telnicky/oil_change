@@ -1,1 +1,10 @@
-<h1> h1 </h1>
+<table class='table'>
+  <tbody>
+  <% @owners.each do |owner| %>  
+    <tr>
+      <td><%= owner.first_name %></td>
+      <td><%=link_to('show', owner_path(owner.id)) %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
