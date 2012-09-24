@@ -5,4 +5,6 @@ class Appointment < ActiveRecord::Base
   belongs_to  :mechanic
 
   has_many    :owners, :through => :appointments
+
+  STATUS = { 1 => "available", 2 => "pending", 3 => "complete"}.freeze
 end
