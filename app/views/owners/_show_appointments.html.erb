@@ -1,0 +1,15 @@
+<h1>Current Appointments:</h1>
+  <div class="appointments-list">
+    <table> 
+      <% @appointments.each do |a| %>
+        <tr>
+            <td>Status:   <%= a.status %>                 </td>          
+            <td>Date:     <%= a.scheduled_date %>         </td>
+            <td>Start:    <%= a.scheduled_start_time %>   </td>
+            <td>End:      <%= a.scheduled_end_time %>     </td>
+            <td>Vehicle:  <%= a.vehicle %>                </td>
+            <td>Mechanic  <%= a.mechanic %>               </td>    
+        </tr>  
+      <% end %>
+  </table>
+</div> 

@@ -1,5 +1,4 @@
 <div class="content-wrapper">
-
   <div class="row welcome-user">  
     <div class="span3">
       <h1>Welcome</h1>
@@ -7,20 +6,15 @@
       Last name:      <%= @owner.last_name %>     <br/>
       Email address:  <%= @owner.email_address %> <br/>
       Phone number:   <%= @owner.phone_number %>  <br/>
+      
       <%= link_to "Add a Vehicle", new_vehicle_path(:owner_id => @owner.id), :class => 'btn btn-success btn-small btn-block' %>
       <%= link_to "Edit User Info", edit_owner_path, :class => 'btn btn-primary btn-small' %>
-
     </div>
-    <div class="span7" >
-      <h1>Current Appointments</h1>
-      = show current appointments
+    <div class="span7">
+       <%= render 'show_appointments' %>
     </div>  
   </div>
-
-  <div class="row ">
-
-   <%= render 'vehicles' %>
-
+  <div class="row">
+   <%= render 'show_vehicles' %>
   </div> 
-
 </div>  

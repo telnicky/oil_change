@@ -2,7 +2,6 @@ class OwnersController < ApplicationController
   respond_to :html
   
   def create
-
     @owner = Owner.new(params[:owner])
     @owner.save!
     respond_with(@owner)
@@ -28,10 +27,11 @@ class OwnersController < ApplicationController
 
   def show
     @owner = Owner.find(params[:id])
-    
+
     #@vehicles = Vehicle.find_by_owner_id(@owner.id)
     @vehicles = @owner.vehicles
-
+    @appointments = @owner.appointments
+        binding.pry
   end
 
   def update
