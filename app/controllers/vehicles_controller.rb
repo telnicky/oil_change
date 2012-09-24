@@ -1,36 +1,46 @@
 class VehiclesController < ApplicationController
   respond_to :html
 
+
+  def new
+    @vehicle = Vehicle.new
+  end
+
   def create
     @vehicle = Vehicle.new(params[:vehicle])
     @vehicle.save!
-    respond_with(@vehicle)
-  end
 
-  def destroy
-    @vehicle = Vehicle.find(params[:id])
-    @vehicle.destroy;
-  end
-
-  def edit 
-    @vehicle = Vehicle.find(params[:id])
+    #respond_with(@vehicle)
+    redirect_to owner_path(@vehicle.owner_id)
   end
 
   def index
     @vehicles = Vehicle.all
   end
 
-  def new
-    @vehicle = Vehicle.new
-  end
+   def show 
+    @vehicle = Vehicle.find(params[:id])
+   end
 
-  def show
+  def edit 
     @vehicle = Vehicle.find(params[:id])
   end
 
   def update
     @vehicle = Vehicle.find(params[:id])
     @vehicle.update_attributes(params[:vehicle])
-    respond_with(@vehicle)
+    #respond_with(@vehicle)
+    redirect_to owner_path(@vehicle.owner_id)
   end
+  
+  def delete
+  end 
+    
+  def destroy
+    Vehicle.find(params[:id]).destroy
+
+    flash[:notice] = "Way to go Green! Your vehicle has been deleted."
+    redirect_to owner_path(:owner_id)
+  end
+
 end

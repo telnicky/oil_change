@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <title>Mobile Oil Change</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag :defaults %>
+  <%= javascript_include_tag "http://maps.googleapis.com/maps/api/js?key=AIzaSyAJXNiTBM1wkZZFwwSM3dB1IyPAqed69_E&sensor=true" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -22,12 +24,12 @@
   </div>
   
 
-  <footer>
+ <!-- <footer>
     <div class="footer">
       <div class="footerBody">
         All rights reserved 2012 
       </div>
     </div>
-  </footer>
+  </footer> -->
 </body>
 </html>

@@ -1,18 +1,19 @@
 <h2><%= @owner.first_name %>'s Vehicles</h2>
-
- <% @vehicles.each do |v| %>
-<div class="span3 vehicle-list">
-      Make:             <%=  v.make %>          <br/>
-      Model:            <%=  v.model %>         <br/>
-      Year:             <%=  v.year %>          <br/>
-      License Plate #:  <%=  v.license_plate %> <br/>
-      VIN Number:       <%=  v.vin_number %>    <br/>  
-      Oil Type:         <%=  v.oil_type %>      <br/>
-      Notes:  <div class="note">    <%=  v.notes %>  </div><br/>   
-      
-      <%= link_to "Schedule Oil Change", new_appointment_path(:id => v.id), :class => 'btn btn-success btn-small btn-block' %>
-      <%= link_to "Edit Vehicle Info", edit_vehicle_path(:id => :id), :class => 'btn btn-primary btn-small' %>
-      <%= link_to "Delete Vehicle Info", :action => 'destroy', :id => v.id, :class => 'btn btn-inverse btn-small', :alert => "Are you sure you want to permanently delete this (Plate # #{v.license_plate}) vehicle & it\'s service history?"  %>      
-</div>
-
+<% if flash[:notice] %>
+      <div class="notice"><%= flash[:notice] %></div>
+<% end %>
+<% @vehicles.each do |v| %>
+      <div class="span3 vehicle-list">
+            Make:             <%=  v.make %>          <br/>
+            Model:            <%=  v.model %>         <br/>
+            Year:             <%=  v.year %>          <br/>
+            License Plate #:  <%=  v.license_plate %> <br/>
+            VIN Number:       <%=  v.vin_number %>    <br/>  
+            Oil Type:         <%=  v.oil_type %>      <br/>
+            Notes:  <div class="note">    <%=  v.notes %>  </div><br/>   
+            
+            <%= link_to "Schedule Oil Change", new_appointment_path(:id => v.id), :class => 'btn btn-success btn-small btn-block' %>
+            <%= link_to "Edit Vehicle Info", edit_vehicle_path(:id => v.id, :owner_id => @owner.id), :class => 'btn btn-primary btn-small' %>
+            <%= link_to "Delete Vehicle Info", {:controller => 'vehicles', :action => 'destroy', :method => :delete, :id => v.id, :owner_id => @owner.id},  :confirm => 'This will permanently delete all data and history about this vehicle.  Are you sure?' %>
+      </div>
 <% end %>

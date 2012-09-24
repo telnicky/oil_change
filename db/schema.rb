@@ -1,3 +1,4 @@
+# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -10,10 +11,9 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120921172009) do
+ActiveRecord::Schema.define(:version => 20120924200759) do
 
   create_table "appointments", :force => true do |t|
-    t.string   "location"
     t.date     "scheduled_date"
     t.time     "scheduled_start_time"
     t.time     "scheduled_end_time"
@@ -24,6 +24,12 @@ ActiveRecord::Schema.define(:version => 20120921172009) do
     t.string   "status"
     t.time     "availability_start_time"
     t.time     "availability_end_time"
+    t.integer  "vehicle_id"
+    t.integer  "mechanic_id"
+    t.integer  "owner_id"
+    t.string   "street"
+    t.string   "city"
+    t.string   "zip"
   end
 
   create_table "mechanics", :force => true do |t|
@@ -56,6 +62,7 @@ ActiveRecord::Schema.define(:version => 20120921172009) do
     t.string   "license_plate"
     t.string   "vin_number"
     t.text     "notes"
+    t.integer  "owner_id"
   end
 
 end
