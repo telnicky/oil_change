@@ -31,7 +31,8 @@ class OwnersController < ApplicationController
     #@vehicles = Vehicle.find_by_owner_id(@owner.id)
     @vehicles = @owner.vehicles
     @appointments = @owner.appointments
-        binding.pry
+
+
   end
 
   def update

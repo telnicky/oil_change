@@ -8,7 +8,6 @@ class AppointmentsController < ApplicationController
   def create
     @appointment = Appointment.new(params[:appointment])
     @appointment.save!
-    binding.pry
     redirect_to owner_path(@appointment.owner_id)
   end
 
