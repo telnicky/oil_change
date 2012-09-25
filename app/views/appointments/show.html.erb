@@ -1,1 +1,29 @@
-show.html.erb
+<h1> Appointments Master List </h1>
+<table>
+ <tr> 
+  <th>Owner First<th>
+  <th>Owner Last</th>
+  <th>Sch. Strt Time</th>
+  <th>Sch. End Time</th>
+  <th>Owner Notes</th>
+  <th>Mechanic Notes</th>
+  <th>Status</th>
+  <th>Vehicle ID</th>
+  <th>Mechanic ID </th>
+  <th>Owner ID</th>
+ </tr> 
+<% @appointments.each do |a| %>
+<tr>
+  <td> <%= a.owner.first_name %>      </td>
+  <td> <%= a.owner.last_name %>       </td>
+  <td> <%= a.scheduled_start_time %>  </td>
+  <td> <%= a.scheduled_end_time %>    </td>    
+  <td> <%= a.owner_notes %>           </td>
+  <td> <%= a.mechanic_notes %>        </td>
+  <td> <%= a.status %>                </td>
+  <td> <%= a.vehicle_id %>            </td>
+  <td> <%= a.owner_id %>              </td>
+  <td> <%= a.mechanic_id %>           </td>
+</tr>
+<% end %>
+</table>

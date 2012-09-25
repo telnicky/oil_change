@@ -9,11 +9,11 @@
         <th>Mechanic: </th>
 
       <% @appointments.each do |a| %>
-        <tr class="<%= cycle('even', 'odd')%>" >
+        <tr class="<%= cycle('even', 'odd')%>">
           <td>  <%= a.status %>                 </td>          
           <td>  <%= a.scheduled_date.strftime("%b %d, %y") %>         </td>
-          <td>  <%= a.scheduled_start_time.strftime("%b %c %I %M") %> - <%= a.scheduled_end_time.strftime("%b %c %I %M") %>     </td>
-          <td>  <%= a.vehicle %>                </td>
+          <td>  <%= a.scheduled_start_time.strftime("%H:%M") %> - <%= a.scheduled_end_time.strftime("%H:%M")  %>     </td>
+          <td>  <%= a.vehicle.make  %>, <%= a.vehicle.model %>, <%= a.vehicle.license_plate %>                </td>
           <td>  <%= a.mechanic %>               </td>    
         </tr>  
       <% end %>

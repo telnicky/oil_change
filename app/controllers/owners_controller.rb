@@ -27,11 +27,9 @@ class OwnersController < ApplicationController
 
   def show
     @owner = Owner.find(params[:id])
-
     #@vehicles = Vehicle.find_by_owner_id(@owner.id)
     @vehicles = @owner.vehicles
     @appointments = @owner.appointments
-
 
   end
 
@@ -40,4 +38,6 @@ class OwnersController < ApplicationController
     @owner.update_attributes(params[:owner])
     respond_with(@owner)
   end
+
+
 end
