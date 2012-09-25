@@ -21,7 +21,6 @@ class OwnersController < ApplicationController
   end
 
   def new
-
     @owner = Owner.new
   end
 
@@ -30,6 +29,10 @@ class OwnersController < ApplicationController
     #@vehicles = Vehicle.find_by_owner_id(@owner.id)
     @vehicles = @owner.vehicles
     @appointments = @owner.appointments
+    
+      #if you insert a number it works fine, but I can't seem to dynamically pull it from the appointments list.
+    get_mechanic_id_from_appointment = 11 #@appointments.find(8).mechanic_id
+    @mechanic = Mechanic.find(get_mechanic_id_from_appointment)
 
   end
 

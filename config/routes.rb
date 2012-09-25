@@ -1,6 +1,9 @@
 OilChange::Application.routes.draw do
   
   get "home/index"
+  get "mechanics/add_job"
+  get "mechanics/remove_job"
+  get "mechanics/complete_job"
   resources :appointments, :mechanics, :owners, :vehicles
 
 

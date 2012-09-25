@@ -1,62 +1,25 @@
 <div class='container'>
   <div class='row welcome-mechanic'>
     <div class="span4">
-      <h2>Welcome</h2>
+      <h2>Welcome Mechanic</h2>
       <%= @mechanic.company_name %> <br/>
       <%= @mechanic.address %> <br/>
       <%= @mechanic.city %>, <%= @mechanic.state %> <br/>
       <%= @mechanic.email_address %> <br/>
       <%= @mechanic.phone_number %> <br/>
     </div>
-    <div class="span8" >
-      <h3>Current Appointments</h3>
-      <% if @mechanic.appointments.present? %>
-        <table>
-          <thead>
-            <tr>
-              <th>Date</th>
-              <th>Availabilty</th>
-              <th>City</th>
-            </tr>
-          </thead>
-          <tbody>
-          <%= @mechanic.appointments.each do |app|%>
-            <tr>
-              <td><%= app.scheduled_date %></td>
-              <td><%= app.availability_start_time %> - <%= app.availability_end_time %></td>
-              <td><%= app.city %></td>
-            </tr>
-          <% end %>  
-          </tbody>
-        </table>
-      <% else %>
-        <p> No appointments scheduled </p>
-      <% end %>
-    </div> 
-  </div> 
-  <div class="row">
-  <% if @available_appointments.present? %>
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Date</th>
-          <th>Availabilty</th>
-          <th>City</th>
-        </tr>
-      </thead>
+  </div>
+  <div class="row">  
+    <h3>Oil Change Requests</h3>  
+      <div class="span11 set-height">
+      <%= render 'available_appointments' %>
+    </div>
+  </div>
+  <div class="row">  
+    <h3>Oil Change Jobs</h3>  
+    <div class="row11 set-height">
 
-      <tbody>
-      <%= @available_appointments.each do |app|%>
-        <tr>
-          <td><%= app.scheduled_date %></td>
-          <td><%= app.availability_start_time %> - <%= app.availability_end_time %></td>
-          <td><%= app.city %></td>
-        </tr>
-      <% end %>
-      </tbody>
-    </table>
-  <% else %>
-    <p> No Available appointments </p>
-  <% end %>
-  </div> 
+      <%= render 'mechanic_sche_appointments' %>
+    </div> 
+  </div>
 </div>

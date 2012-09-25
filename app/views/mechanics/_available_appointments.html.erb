@@ -1,0 +1,37 @@
+
+  <% if Appointment.present? %>
+    <table> 
+        <tr>
+          <th>Status:    </th>
+          <th>Date:      </th>
+          <th>Time Frame:</th>
+          <th>Location:  </th>
+          <th>Vehicle:   </th>
+          <th> </th>
+        </tr>
+        <% Appointment.where(:status => "Open").each do |a| %>
+            <tr class="<%= cycle('even', 'odd')%>">
+              <td>  <%= a.status %>                 </td>          
+              <td>  
+                  <% if a.scheduled_date.present? %>
+                     <%=  a.scheduled_date.strftime("%b %d, %y") %>
+                  <% end %>         
+              </td>
+              <td>  
+                  <% if a.scheduled_start_time.present? %> 
+                  <% if a.scheduled_end_time.present? %>
+                    <%= a.scheduled_start_time.strftime("%H:%M") %> - <%= a.scheduled_end_time.strftime("%H:%M")  %>     
+                  <% end %> 
+                  <% end %>
+                  </td>
+              <td><%= a.street %> <%= a.city %>, <%= a.zip %></td>    
+              <td><%= a.vehicle %>, <%= a.vehicle %>, <%= a.vehicle %>                </td>
+              <td><%= link_to "Inspect", :class => "btn btn-primary btn-small"  %>
+                  <%= link_to "Add Job", :action => "add_job", :appointment_id => a.id, :id => @mechanic.id, :class => "btn btn-success btn-small"  %>
+                   </td>    
+            </tr>  
+        <% end %>
+    </table> 
+  <% else %>
+      <p> There are no appointments available at this time </p> 
+  <% end %>

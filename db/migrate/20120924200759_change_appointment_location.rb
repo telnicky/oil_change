@@ -9,6 +9,7 @@ class ChangeAppointmentLocation < ActiveRecord::Migration
   def down
     remove_column :appointments, :zip
     remove_column :appointments, :city
-    add_column :appointments, :location
+    remove_column :appointments, :street
+    add_column :appointments, :location, :string
   end
 end
