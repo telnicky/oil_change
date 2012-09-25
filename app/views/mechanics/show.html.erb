@@ -22,8 +22,8 @@
           <tbody>
           <%= @mechanic.appointments.each do |app|%>
             <tr>
-              <td><%= app.date %></td>
-              <td><%= app.availability_start_time %> - <%= @app.availability_end_time %></td>
+              <td><%= app.scheduled_date %></td>
+              <td><%= app.availability_start_time %> - <%= app.availability_end_time %></td>
               <td><%= app.city %></td>
             </tr>
           <% end %>  
@@ -48,8 +48,8 @@
       <tbody>
       <%= @available_appointments.each do |app|%>
         <tr>
-          <td><%= app.date %></td>
-          <td><%= app.availability_start_time %> - <%= @app.availability_end_time %></td>
+          <td><%= app.scheduled_date %></td>
+          <td><%= app.availability_start_time %> - <%= app.availability_end_time %></td>
           <td><%= app.city %></td>
         </tr>
       <% end %>
