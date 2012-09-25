@@ -28,7 +28,6 @@ class AppointmentsController < ApplicationController
   def update
     @appointment = Appointment.find(params[:id])
     @appointment.update_attributes(params[:appointment])
-
     redirect_to owner_path(@appointment.owner_id)
   end
 
