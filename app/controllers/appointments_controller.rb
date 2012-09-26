@@ -23,12 +23,17 @@ class AppointmentsController < ApplicationController
 
   def edit 
     @appointment = Appointment.find(params[:id])
+    @mechanic_id = params[:mechanic_id]
   end
 
   def update
     @appointment = Appointment.find(params[:id])
     @appointment.update_attributes(params[:appointment])
 
+<<<<<<< HEAD
+=======
+# if mechanic need to redirect to mechanic show
+>>>>>>> 6799e4f2130c35ea6685c2de3089362ccfab97c9
     redirect_to owner_path(@appointment.owner_id)
   end
 

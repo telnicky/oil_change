@@ -27,13 +27,12 @@ namespace :data  do
                 :email_address => Faker::Internet.email
                 )
 
-     Appointment.create(:availability_start_time => "#{Time.now}",
-                        :availability_end_time => "#{Time.now.end_of_day}",
-                        :owner_notes => Faker::Lorem.paragraph(),
+     start_time = rand(0..31).days.from_now.utc
+     Appointment.create(:owner_notes => Faker::Lorem.paragraph(),
                         :mechanic_notes => Faker::Lorem.paragraph(),
                         :status => 'available',
-                        :scheduled_date => "#{Time.now.month / Time.now.day}",
-                        :scheduled_end_time => (Time.now + 3600),
+                        :scheduled_start_time => start_time,
+                        :scheduled_end_time => start_time.end_of_day,
                         :vehicle_id => veh.id,
                         :owner_id => owner.id,
                         :street => Faker::Address.street_name,
