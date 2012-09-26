@@ -24,10 +24,14 @@
   height: 100px;
   overflow: scroll;
 }
-.even {
-
+.even, th {
+  background-color: white;
 }
 
 .odd {
   background-color: #D6E3FF;
+}
+th, td {
+  border: 1px gray solid;
+  padding: 5px;
 }

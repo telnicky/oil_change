@@ -16,7 +16,7 @@
             
             <%= link_to "Schedule Oil Change", new_appointment_path(:vehicle_id => v.id, :owner_id => @owner.id), :class => 'btn btn-success btn-small btn-block' %>
             <%= link_to "Edit Vehicle Info", edit_vehicle_path(:vehicle_id => v.id, :owner_id => @owner.id), :class => 'btn btn-primary btn-small' %>
-            <%= link_to "Delete Vehicle Info", {:controller => 'vehicles', :action => 'destroy', :method => :delete, :vehicle_id => v.id, :owner_id => @owner.id},  :confirm => 'This will permanently delete all data and history about this vehicle.  Are you sure?' %>
+            <%= link_to "Delete Vehicle", vehicle_path( :id => v.id, :owner_id => @owner.id), :method => 'delete', :confirm => 'This will permanently delete all data and history about this vehicle.  Are you sure?', :class => 'btn btn-inverse btn-small' %>
       </div>
       <div class="appointment-view">
       </div>

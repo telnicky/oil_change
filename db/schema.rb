@@ -15,13 +15,15 @@ ActiveRecord::Schema.define(:version => 20120924200759) do
 
   create_table "appointments", :force => true do |t|
     t.date     "scheduled_date"
+    t.date     "date"
     t.time     "scheduled_start_time"
+    t.time     "time"
     t.time     "scheduled_end_time"
-    t.datetime "created_at",              :null => false
-    t.datetime "updated_at",              :null => false
+    t.datetime "created_at",                                  :null => false
+    t.datetime "updated_at",                                  :null => false
     t.text     "owner_notes"
     t.text     "mechanic_notes"
-    t.string   "status"
+    t.string   "status",                  :default => "Open"
     t.time     "availability_start_time"
     t.time     "availability_end_time"
     t.integer  "vehicle_id"

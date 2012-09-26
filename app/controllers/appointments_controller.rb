@@ -17,6 +17,8 @@ class AppointmentsController < ApplicationController
 
   def show
     @appointment = Appointment.find(params[:id])
+    @appointments = Appointment.all
+
   end
 
   def edit 
@@ -33,8 +35,10 @@ class AppointmentsController < ApplicationController
   end
 
   def destroy
-    @appointment = Appointment.find(params[:id])
-    @appointment.destroy;
+    Appointment.find(params[:id]).destroy
+    
+    flash[:notice] = "Your appointment has been deleted."
+    redirect_to owner_path(params[:owner_id])
   end
 
 end

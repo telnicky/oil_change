@@ -1,3 +1,12 @@
 // Place all the styles related to the mechanics controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.set-height {
+  height: 350px;
+  overflow: scroll;
+  padding: 5px;
+  border: 1px gray solid;
+  background: gray;
+  border-radius: 2px;
+}

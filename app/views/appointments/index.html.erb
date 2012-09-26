@@ -1,1 +1,33 @@
-index.html.erb
+<h1> Appointments Master List </h1>
+<table>
+ <tr> 
+  <th>Owner First</th>
+  <th>Owner Last</th>
+  <th>Sch. Strt Time</th>
+  <th>Sch. End Time</th>
+  <th>Owner Notes</th>
+  <th>Mechanic Notes</th>
+  <th>Status</th>
+  <th>Vehicle ID</th>
+  <th>Mechanic ID </th>
+  <th>Owner ID</th>
+  <th>Change</th>
+ </tr> 
+<% @appointments.each do |a| %>
+<tr class="<%= cycle('even', 'odd') %>">
+  <td> <%=  %>      </td>
+  <td> <%=  %>       </td>
+  <td> <%= a.scheduled_start_time %>  </td>
+  <td> <%= a.scheduled_end_time %>    </td>    
+  <td> <%= a.owner_notes %>           </td>
+  <td> <%= a.mechanic_notes %>        </td>
+  <td> <%= a.status %>                </td>
+  <td> <%= a.vehicle_id %>            </td>
+  <td> <%= a.owner_id %>              </td>
+  <td> <%= a.mechanic_id %>           </td>
+  <td>
+    <%= link_to 'Edit', edit_appointment_path(:id => a.id, :owner_id => a.owner_id) %>
+    <%= link_to 'Delete', {:controller => 'appointments', :action => 'destroy', :id => a.id, :owner_id => a.owner_id} %>
+</tr>
+<% end %>
+</table>

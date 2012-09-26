@@ -1,21 +1,42 @@
 <h1>Current Appointments:</h1>
   <div class="appointments-list">
     <table> 
+      <thead>
       <tr>
-        <th>Status:   </th>
-        <th>Date:     </th>
-        <th>Time Frame:</th>
-        <th>Vehicle:  </th>
-        <th>Mechanic: </th>
-
+        <th>Status:     </th>
+        <th>Date:       </th>
+        <th>Time Frame: </th>
+        <th>Vehicle:    </th>
+        <th>Mechanic:   </th>
+        <th>Options:    </th>
+      </tr>
+      </thead>  
+      <tbody>
       <% @appointments.each do |a| %>
-        <tr class="<%= cycle('even', 'odd')%>" >
-          <td>  <%= a.status %>                 </td>          
-          <td>  <%= a.scheduled_date.strftime("%b %d, %y") %>         </td>
-          <td>  <%= a.scheduled_start_time.strftime("%b %c %I %M") %> - <%= a.scheduled_end_time.strftime("%b %c %I %M") %>     </td>
-          <td>  <%= a.vehicle %>                </td>
-          <td>  <%= a.mechanic %>               </td>    
-        </tr>  
+        <tr class="<%= cycle('even', 'odd')%>">
+          <td><%= a.status %>                 </td>          
+          <td>  <% if a.scheduled_date.present? %>
+                <%=  a.scheduled_date.strftime("%b %d, %y") %>
+                <% end %>         
+              </td>
+          <td><% if a.scheduled_start_time.present? %> <% if a.scheduled_start_time.present? %>
+                <%= a.scheduled_start_time.strftime("%H:%M") %> - <%= a.scheduled_end_time.strftime("%H:%M")  %>     
+              <% end %> <% end %>
+              </td>
+          <td><%= Vehicle.find(a.vehicle).make  %>, <%= a.vehicle.model %> <br/> <%= a.vehicle.license_plate %>                </td>
+          <td>  <% if a.mechanic_id.nil? %>
+                <p> ...pending... </p>
+                <% else %>
+                  <%= Mechanic.find(a.mechanic_id).company_name %> 
+                <% end %>  
+          </td>
+          <td>  <%= link_to "Edit Appointment", edit_appointment_path(:appointment_id => a.id, :owner_id => @owner.id), :class => 'btn btn-primary btn-small' %> 
+                <%= link_to "Delete Appointment", appointment_path( :id => a.id, :owner_id => @owner.id), :method => 'delete', :confirm => 'Are you sure you want to permanently delete this appointment?', :class => 'btn btn-inverse btn-small' %>
+
+                
+          </td>        
+        </tr>
       <% end %>
-  </table>
-</div> 
+      <tbody>     
+    </table>
+  </div> 

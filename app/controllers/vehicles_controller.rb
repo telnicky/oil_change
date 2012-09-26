@@ -39,8 +39,8 @@ class VehiclesController < ApplicationController
   def destroy
     Vehicle.find(params[:id]).destroy
 
-    flash[:notice] = "Way to go Green! Your vehicle has been deleted."
-    redirect_to owner_path(:owner_id)
+    flash[:notice] = "I hope your going Green. Your vehicle has been deleted."
+    redirect_to owner_path(params[:owner_id])
   end
 
 end

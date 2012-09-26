@@ -2,12 +2,11 @@ class AddMoreAppointmentInfo < ActiveRecord::Migration
   def up
     add_column :appointments, :owner_notes, :text
     add_column :appointments, :mechanic_notes, :text
-    add_column :appointments, :status, :string
+    add_column :appointments, :status, :string, :default => "Open"
     add_column :appointments, :availability_start_time, :time
     add_column :appointments, :availability_end_time, :time
     add_column :appointments, :vehicle_id, :int
     add_column :appointments, :mechanic_id, :int
-
   end
 
   def down
