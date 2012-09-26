@@ -31,6 +31,7 @@ namespace :data  do
      Appointment.create(:owner_notes => Faker::Lorem.paragraph(),
                         :mechanic_notes => Faker::Lorem.paragraph(),
                         :status => 'available',
+                        :schedulted_date => start_time,
                         :scheduled_start_time => start_time,
                         :scheduled_end_time => start_time.end_of_day,
                         :vehicle_id => veh.id,
