@@ -11,7 +11,7 @@
     <div class="span8" >
       <h3>Current Appointments</h3>
       <% if @mechanic.appointments.present? %>
-        <table>
+        <table class="table table-hover table-condensed">
           <thead>
             <tr>
               <th>Date</th>
@@ -20,7 +20,7 @@
             </tr>
           </thead>
           <tbody>
-          <%= @mechanic.appointments.each do |app|%>
+          <% @mechanic.appointments.each do |app|%>
             <tr>
               <td><%= app.scheduled_date %></td>
               <td><%= app.availability_start_time %> - <%= app.availability_end_time %></td>
@@ -35,28 +35,32 @@
     </div> 
   </div> 
   <div class="row">
-  <% if @available_appointments.present? %>
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Date</th>
-          <th>Availabilty</th>
-          <th>City</th>
-        </tr>
-      </thead>
+    <div class="span8">
+    <h3>Available Appointments</h3>
+    <% if @available_appointments.present? %>
+      <table class="table table-hover table-condensed">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Availabilty</th>
+            <th>City</th>
+          </tr>
+        </thead>
 
-      <tbody>
-      <%= @available_appointments.each do |app|%>
-        <tr>
-          <td><%= app.scheduled_date %></td>
-          <td><%= app.availability_start_time %> - <%= app.availability_end_time %></td>
-          <td><%= app.city %></td>
-        </tr>
-      <% end %>
-      </tbody>
-    </table>
-  <% else %>
-    <p> No Available appointments </p>
-  <% end %>
+        <tbody>
+        <% @available_appointments.each do |app|%>
+          <tr>
+            <td><%= app.scheduled_date %></td>
+            <td><%= app.scheduled_start_time %> - <%= app.scheduled_end_time %></td>
+            <td><%= app.city %></td>
+            <td><%= link_to('Add', edit_appointment_path(app.id, :mechanic_id => @mechanic.id)) %></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    <% else %>
+      <p> No Available appointments </p>
+    <% end %>
+    </div>
   </div> 
 </div>

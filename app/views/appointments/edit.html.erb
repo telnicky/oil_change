@@ -1,1 +1,6 @@
-<%= render 'form' %>
+
+<% if @mechanic_id.present? %>
+  <%= render 'mechanic_form' %>
+<% else %>
+  <%= render 'owner_form' %>
+<% end %>

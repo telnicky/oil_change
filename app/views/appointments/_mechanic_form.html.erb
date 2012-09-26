@@ -1,0 +1,40 @@
+  <style type="text/css">
+      html { height: 100% }
+      body { height: 100%; margin: 0; padding: 0 }
+      #map_canvas { height: 100% }
+  </style>
+
+<%= form_for(@appointment, :html => {:class => "form-horizontal"}) do |f| %>
+  <fieldset>
+<!-- we should probably not be passing the id's to the form through the url -->
+    <%= f.hidden_field :owner_id, :value => @appointment.owner_id %>
+    <%= f.hidden_field :vehicle_id, :value => @appointment.vehicle_id %>
+    <%= f.hidden_field :mechanic_id, :value => params[:mechanic_id] %>
+<!--##################### TIME & DATE ############################################################################ -->    
+    <div class="control-group">
+      <%= f.label :mechanic_notes, :class => "control-label" %>
+      <div class="controls">
+        <%= f.text_area :mechanic_notes %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :availability_start_time, :class => "control-label" %>
+      <div class="controls">
+        <%= f.text_field :availability_start_time %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :availability_end_time, :class => "control-label" %>
+      <div class="controls">
+        <%= f.text_field :availability_end_time %>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <%= f.submit :class => "btn btn-primary" %>
+    </div>
+  
+  </fieldset>
+<% end %>
