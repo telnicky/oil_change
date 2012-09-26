@@ -1,0 +1,3 @@
+time:
+  formats:
+    short_time: "%H:%M%p"

@@ -29,7 +29,6 @@ class VehiclesController < ApplicationController
   def update
     @vehicle = Vehicle.find(params[:id])
     @vehicle.update_attributes(params[:vehicle])
-
     redirect_to owner_path(@vehicle.owner_id)
   end
   

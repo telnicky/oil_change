@@ -1,8 +1,6 @@
-  <style type="text/css">
-      html { height: 100% }
-      body { height: 100%; margin: 0; padding: 0 }
-      #map_canvas { height: 100% }
-  </style>
+
+<!--##################### START BODY & VIEWS ############################################################################ -->    
+
 
 <%= form_for(@appointment, :html => {:class => "form-horizontal"}) do |f| %>
   <fieldset>
@@ -29,9 +27,9 @@
           <%= f.text_field :zip %>
         </div>
       </div>
-      <div class="control-group-right"> 
-        <div class="controls" onload="initialize()">
-          <div id="map_canvas" style="width:300px; height:300px" ></div>
+      <div class="control-group-right" onload="initialize()"> 
+        <div class="controls">
+          <div id="map_canvas" style="width:500px; height:300px" ></div>
         </div>
       </div>
     </div>
@@ -40,21 +38,21 @@
     <div class="control-group">
       <%= f.label :scheduled_date, :class => "control-label" %>
       <div class="controls">
-        <%= f.text_field :scheduled_date, :id => 'datepicker' %>
+        <%= f.text_field :scheduled_date, :id => 'datepicker', :format => :short_date %>
       </div>
     </div>
 
     <div class="control-group">
       <%= f.label :scheduled_start_time, :class => "control-label"  %>
       <div class="controls">
-        <%= f.text_field :scheduled_start_time, :class => 'timepicker' %>
+        <%= f.text_field :scheduled_start_time, :class => 'timepicker', :format => :short_time  %>
       </div>
     </div>
 
     <div class="control-group">
       <%= f.label :scheduled_end_time, :class => "control-label" %>
       <div class="controls">
-        <%= f.text_field :scheduled_end_time, :class => 'timepicker' %>
+        <%= f.text_field :scheduled_end_time, :class => 'timepicker', :format => :short_time %>
       </div>
     </div>
   <h3>What information would you like the mechanic to know?</h3>

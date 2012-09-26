@@ -1,4 +1,4 @@
-
+<!--################################################################################## -->
   <% if Appointment.present? %>
     <table> 
         <tr>
@@ -8,7 +8,13 @@
           <th>Time Frame:</th>
           <th>Location:  </th>
           <th>Vehicle:   </th>
-          <th> </th>
+          <th><form name="chooseViewHours">
+                <label for="viewHours">How many hours do you want to view:</label>
+                <input id="viewHours" value="12" id="special" />
+                <input type="submit" onclick="#">
+              </form>
+            
+           </th>
         </tr>
         <% Appointment.where(:status => "Open").each do |a| %>
             <tr class="<%= cycle('even', 'odd')%>">

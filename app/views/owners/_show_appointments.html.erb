@@ -20,7 +20,7 @@
                 <% end %>         
               </td>
           <td><% if a.scheduled_start_time.present? %> <% if a.scheduled_start_time.present? %>
-                <%= a.scheduled_start_time.strftime("%H:%M") %> - <%= a.scheduled_end_time.strftime("%H:%M")  %>     
+                <%= a.scheduled_start_time.strftime("%H:%M%p") %> - <%= a.scheduled_end_time.strftime("%H:%M%p")  %>     
               <% end %> <% end %>
               </td>
           <td><%= Vehicle.find(a.vehicle).make  %>, <%= a.vehicle.model %> <br/> <%= a.vehicle.license_plate %>                </td>
@@ -30,8 +30,10 @@
                   <%= Mechanic.find(a.mechanic_id).company_name %> 
                 <% end %>  
           </td>
-          <td>  <%= link_to "Edit Appointment", edit_appointment_path(:appointment_id => a.id, :owner_id => @owner.id), :class => 'btn btn-primary btn-small' %> 
-                <%= link_to "Delete Appointment", appointment_path( :id => a.id, :owner_id => @owner.id), :method => 'delete', :confirm => 'Are you sure you want to permanently delete this appointment?', :class => 'btn btn-inverse btn-small' %>
+          <td>  <%= link_to "Edit Appointment", edit_appointment_path(:appointment_id => a.id, :owner_id => @owner.id), 
+                    :class => 'btn btn-primary btn-small' %> 
+                <%= link_to "Delete Appointment", appointment_path( :id => a.id, :owner_id => @owner.id), :method => 'delete', 
+                    :confirm => 'Are you sure you want to permanently delete this appointment?', :class => 'btn btn-inverse btn-small' %>
 
                 
           </td>        
