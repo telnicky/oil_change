@@ -1,8 +1,8 @@
 class CreateAppointments < ActiveRecord::Migration
   def change
     create_table :appointments do |t|
-      t.datetime "owner_start", :default => DateTime.now           
-      t.datetime "owner_end",   :default => DateTime.now + 1.hour  
+      t.datetime "owner_start"
+      t.datetime "owner_end"
       t.text     "owner_notes"
       
       t.datetime "mechanic_start"
