@@ -6,7 +6,11 @@ class AppointmentsController < ApplicationController
   end
   
   def create
-    @appointment = Appointment.new(params[:appointment])
+    appointment = params[:appointment]
+    appointment[:scheduled_date] = Date.strptime(appointment[:scheduled_date], '%m/%d/%Y')
+    appointment[:scheduled_start_time] = Time.parse(appointment[:scheduled_start_time])
+    appointment[:scheduled_end_time] = Time.parse(appointment[:scheduled_end_time])
+    @appointment = Appointment.new(appointment)
     @appointment.save!
     redirect_to owner_path(@appointment.owner_id)
   end
@@ -28,6 +32,7 @@ class AppointmentsController < ApplicationController
 
   def update
     @appointment = Appointment.find(params[:id])
+  binding.pry
     @appointment.update_attributes(params[:appointment])
 
     redirect_to owner_path(@appointment.owner_id)

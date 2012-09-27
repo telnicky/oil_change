@@ -14,8 +14,24 @@
 ActiveRecord::Schema.define(:version => 20120924200759) do
 
   create_table "appointments", :force => true do |t|
+    # owner_start_date
+    # owner_end_date
+    # owner_start_time
+    # owner_end_time
+    # mechanic_start_time
+    # mechanic_end_time
+    # owner_notes
+    # mechanic_notes
+    # status --> int
+    # vehicle_id
+    # mechanic_id
+    # owner_id
+    # street
+    # city
+    # zip
+
     t.date     "scheduled_date"
-    t.date     "date"
+    t.date     "date"           
     t.time     "scheduled_start_time"
     t.time     "time"
     t.time     "scheduled_end_time"

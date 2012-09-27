@@ -27,7 +27,9 @@ class OwnersController < ApplicationController
 
   def update
     @owner = Owner.find(params[:id])
-    @owner.update_attributes(params[:owner])
+    unless @owner.update_attributes!(params[:owner])
+      flash[:notice] = "update owners failed"
+    end
     respond_with(@owner)
   end
 
