@@ -30,7 +30,8 @@ body {
   width: 100%;
   height: 70px;
   background-image: url('/assets/med_dotted.png');
-  border-bottom: 1px $lightgray solid;
+  border-bottom: 2px rgba(0, 0, 0, .4) solid;
+  border-top: 1px rgba(0, 0, 0, .4) solid;
   display: inline-block;
   position: relative;
   img {
@@ -45,8 +46,9 @@ body {
   }
   .userInfo {
     position: absolute;
+    text-align: right;
     right: 20px;
-    top: 45px;
+    bottom: 0px;
   }
 }
 
