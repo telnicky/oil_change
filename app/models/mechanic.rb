@@ -1,5 +1,6 @@
 class Mechanic < ActiveRecord::Base
-  attr_accessible :address, :city, :company_name, :email_address, :phone_number, :state
+  attr_accessible :address, :street, :city, :zip, :state
+  attr_accessible :company_name, :first_name, :last_name, :email_address, :phone_number
   has_many :appointments
   
   validates :company_name, :presence => true
