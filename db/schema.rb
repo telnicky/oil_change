@@ -11,44 +11,46 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120924200759) do
+ActiveRecord::Schema.define(:version => 20120920184320) do
 
   create_table "appointments", :force => true do |t|
-    t.date     "scheduled_date"         #CHANGE owner_start t.datetime
-    t.date     "date"                   #REMOVE        
-    t.time     "scheduled_start_time"   #REMOVE
-    t.time     "time"                   #CHANGE owner_end t.datetime => owner_start + x.hours + xx.minutes
-    t.time     "scheduled_end_time"     #REMOVE
-    t.datetime "created_at",                                  :null => false
-    t.datetime "updated_at",                                  :null => false
+    t.datetime "owner_start",                 :default => '2012-09-27 16:30:48'
+    t.datetime "owner_end",                   :default => '2012-09-27 17:30:48'
     t.text     "owner_notes"
+    t.datetime "mechanic_start"
+    t.datetime "mechanic_end"
     t.text     "mechanic_notes"
-    t.string   "status",                  :default => "Open" #CHANGE to_i 1,2,3
-    t.time     "availability_start_time" #CHANGE mechanic_start t.datetime
-    t.time     "availability_end_time"   #CHANGE mechanic_end   t.datetime    
-    t.integer  "vehicle_id"
-    t.integer  "mechanic_id"
-    t.integer  "owner_id"
+    t.integer  "mileage",        :limit => 6
+    t.integer  "status",                      :default => 1,                     :null => false
     t.string   "street"
     t.string   "city"
-    t.string   "zip"
+    t.string   "zip",            :limit => 7
+    t.string   "state",          :limit => 2
+    t.integer  "vehicle_id",                                                     :null => false
+    t.integer  "mechanic_id"
+    t.integer  "owner_id",                                                       :null => false
+    t.datetime "created_at",                                                     :null => false
+    t.datetime "updated_at",                                                     :null => false
   end
 
   create_table "mechanics", :force => true do |t|
     t.string   "company_name"
-    t.string   "address"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "street"
     t.string   "city"
-    t.string   "state"
+    t.integer  "zip",           :limit => 7
+    t.string   "state",         :limit => 2
     t.string   "phone_number"
-    t.string   "email_address"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.string   "email_address",              :null => false
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
   end
 
   create_table "owners", :force => true do |t|
     t.string   "first_name"
     t.string   "last_name"
-    t.string   "email_address"
+    t.string   "email_address", :null => false
     t.string   "phone_number"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
@@ -57,14 +59,15 @@ ActiveRecord::Schema.define(:version => 20120924200759) do
   create_table "vehicles", :force => true do |t|
     t.string   "make"
     t.string   "model"
-    t.integer  "year"           #ADD color t.string        
-    t.string   "oil_type"       #CHANGE to_i 1,2,3
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
-    t.string   "license_plate"
-    t.string   "vin_number"
+    t.integer  "year",          :limit => 4
+    t.string   "color"
+    t.string   "license_plate", :limit => 7
+    t.string   "vin_number",    :limit => 17
+    t.integer  "oil_type",                    :default => 1
     t.text     "notes"
-    t.integer  "owner_id"
+    t.integer  "owner_id",                                   :null => false
+    t.datetime "created_at",                                 :null => false
+    t.datetime "updated_at",                                 :null => false
   end
 
 end
