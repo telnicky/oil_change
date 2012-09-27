@@ -14,34 +14,18 @@
 ActiveRecord::Schema.define(:version => 20120924200759) do
 
   create_table "appointments", :force => true do |t|
-    # owner_start_date
-    # owner_end_date
-    # owner_start_time
-    # owner_end_time
-    # mechanic_start_time
-    # mechanic_end_time
-    # owner_notes
-    # mechanic_notes
-    # status --> int
-    # vehicle_id
-    # mechanic_id
-    # owner_id
-    # street
-    # city
-    # zip
-
-    t.date     "scheduled_date"
-    t.date     "date"           
-    t.time     "scheduled_start_time"
-    t.time     "time"
-    t.time     "scheduled_end_time"
+    t.date     "scheduled_date"         #CHANGE owner_start t.datetime
+    t.date     "date"                   #REMOVE        
+    t.time     "scheduled_start_time"   #REMOVE
+    t.time     "time"                   #CHANGE owner_end t.datetime => owner_start + x.hours + xx.minutes
+    t.time     "scheduled_end_time"     #REMOVE
     t.datetime "created_at",                                  :null => false
     t.datetime "updated_at",                                  :null => false
     t.text     "owner_notes"
     t.text     "mechanic_notes"
-    t.string   "status",                  :default => "Open"
-    t.time     "availability_start_time"
-    t.time     "availability_end_time"
+    t.string   "status",                  :default => "Open" #CHANGE to_i 1,2,3
+    t.time     "availability_start_time" #CHANGE mechanic_start t.datetime
+    t.time     "availability_end_time"   #CHANGE mechanic_end   t.datetime    
     t.integer  "vehicle_id"
     t.integer  "mechanic_id"
     t.integer  "owner_id"
@@ -73,8 +57,8 @@ ActiveRecord::Schema.define(:version => 20120924200759) do
   create_table "vehicles", :force => true do |t|
     t.string   "make"
     t.string   "model"
-    t.integer  "year"
-    t.string   "oil_type"
+    t.integer  "year"           #ADD color t.string        
+    t.string   "oil_type"       #CHANGE to_i 1,2,3
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
     t.string   "license_plate"
