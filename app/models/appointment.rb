@@ -1,6 +1,6 @@
 class Appointment < ActiveRecord::Base
-  attr_accessible :street, :city, :zip , :owner_notes, :scheduled_date, :scheduled_end_time, :scheduled_start_time
-  attr_accessible :availability_end_time, :owner_id, :availability_start_time, :vehicle_id, :mechanic_notes, :status
+  attr_accessible :street, :city, :zip , :owner_notes, :owner_start, :owner_end
+  attr_accessible :owner_id, :vehicle_id, :mechanic_notes, :status
   attr_accessible :mechanic_id
 
   
@@ -8,11 +8,11 @@ class Appointment < ActiveRecord::Base
   belongs_to  :mechanic
 
   has_many    :owners, :through => :appointments
-  #validates :scheduled_date, :presence => true 
-  #validates :owner_start, :presence => true
-  #validates :owner_end, :presence => true
-  #validates :mechanic_start, :presence => true
-  #validates :mechanic_end, :presence => true
+
+  validates :owner_start, :presence => true
+  validates :owner_end, :presence => true
+  validates :mechanic_start, :presence => true
+  validates :mechanic_end, :presence => true
   validates :vehicle_id, :presence => true
   validates :owner_id, :presence => true
   validates :status, :presence => true
@@ -22,7 +22,7 @@ class Appointment < ActiveRecord::Base
 
 
 
-  validate :scheduled_date_in_future
+  validate :owner_start_in_future
   
   
 
@@ -34,9 +34,9 @@ class Appointment < ActiveRecord::Base
   
 
 
-  def scheduled_date_in_future
-    if scheduled_date.present?
-      errors.add("We cannot go back in time to change your oil.") if scheduled_date < Date.today
+  def owner_start_in_future
+    if owner_start.present?
+      errors.add("We cannot go back in time to change your oil.") if owner_start < Date.today
     end
   end 
 

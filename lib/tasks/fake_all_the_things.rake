@@ -20,8 +20,8 @@ namespace :fake  do
                           :color => Faker::Lorem.words.first,
                           :owner_id => owner.id )
 
-     mech = Mechanic.create(:name => Faker::Name.first_name,
-                            :address => Faker::Address.street_name,
+     mech = Mechanic.create(:company_name => Faker::Name.first_name,
+                            :street => Faker::Address.street_name,
                             :city => Faker::Address.city,
                             :state => Faker::Address.state,
                             :zip => Faker::Address.zip,

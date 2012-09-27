@@ -5,8 +5,8 @@ namespace :fake  do
   task :mechanics => :environment do
     num_mechanics = ENV['NUM_RECORDS'].present? ? ENV['NUM_RECORDS'].to_i : 10
     num_mechanics.times do
-     Mechanic.create(:name => Faker::Name.first_name,
-                     :address => Faker::Address.street_name,
+     Mechanic.create(:company_name => Faker::Name.first_name,
+                     :street => Faker::Address.street_name,
                      :city => Faker::Address.city,
                      :state => Faker::Address.state,
                      :zip => Faker::Address.zip,
