@@ -14,18 +14,18 @@
 ActiveRecord::Schema.define(:version => 20120924200759) do
 
   create_table "appointments", :force => true do |t|
-    t.date     "scheduled_date"         #CHANGE owner_start t.datetime
-    t.date     "date"                   #REMOVE        
-    t.time     "scheduled_start_time"   #REMOVE
-    t.time     "time"                   #CHANGE owner_end t.datetime => owner_start + x.hours + xx.minutes
-    t.time     "scheduled_end_time"     #REMOVE
+    t.date     "scheduled_date"
+    t.date     "date"
+    t.time     "scheduled_start_time"
+    t.time     "time"
+    t.time     "scheduled_end_time"
     t.datetime "created_at",                                  :null => false
     t.datetime "updated_at",                                  :null => false
     t.text     "owner_notes"
     t.text     "mechanic_notes"
-    t.string   "status",                  :default => "Open" #CHANGE to_i 1,2,3
-    t.time     "availability_start_time" #CHANGE mechanic_start t.datetime
-    t.time     "availability_end_time"   #CHANGE mechanic_end   t.datetime    
+    t.string   "status",                  :default => "Open"
+    t.time     "availability_start_time"
+    t.time     "availability_end_time"
     t.integer  "vehicle_id"
     t.integer  "mechanic_id"
     t.integer  "owner_id"
@@ -57,8 +57,8 @@ ActiveRecord::Schema.define(:version => 20120924200759) do
   create_table "vehicles", :force => true do |t|
     t.string   "make"
     t.string   "model"
-    t.integer  "year"           #ADD color t.string        
-    t.string   "oil_type"       #CHANGE to_i 1,2,3
+    t.integer  "year"
+    t.string   "oil_type"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
     t.string   "license_plate"

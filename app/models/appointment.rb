@@ -9,9 +9,30 @@ class Appointment < ActiveRecord::Base
 
   has_many    :owners, :through => :appointments
   #validates :scheduled_date, :presence => true 
+  #validates :owner_start, :presence => true
+  #validates :owner_end, :presence => true
+  #validates :mechanic_start, :presence => true
+  #validates :mechanic_end, :presence => true
+  validates :vehicle_id, :presence => true
+  validates :owner_id, :presence => true
+  validates :status, :presence => true
+  validates :street, :presence => true
+  validates :city, :presence => true
+  validates :zip, :presence => true
+
+
+
   validate :scheduled_date_in_future
   
+  
+
+
+
+
   STATUS = { 1 => "available", 2 => "pending", 3 => "complete"}.freeze
+
+  
+
 
   def scheduled_date_in_future
     if scheduled_date.present?

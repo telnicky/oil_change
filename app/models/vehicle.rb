@@ -3,5 +3,13 @@ class Vehicle < ActiveRecord::Base
   
   has_many :appointments
   belongs_to :owner
-  
+
+  validates :make, :presence => true
+  validates :model, :presence => true
+  validates :license_plate, :presence => true
+  validates :oil_type, :presence => true
+  validates :owner_id, :presence => true
+  validates :vin_number, :presence => true
+  validates :year, :presence => true
+
 end

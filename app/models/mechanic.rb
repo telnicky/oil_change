@@ -4,5 +4,7 @@ class Mechanic < ActiveRecord::Base
   
   validates :company_name, :presence => true
   validates :email_address, :presence => true, :uniqueness => true
-  
+  validates :phone_number, :presence => true, :format => {:with => /\(\d{3}\)\d{3}\-\d{4}/}
+  #validates :zip, :presence => true
+
 end
