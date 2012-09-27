@@ -10,34 +10,20 @@ li {
   padding: 10px;
 }
 
-.banner {
-  width: 100%;
-  height: 200px;
-  h1 {
-    font-size: 170%;
-    text-align: center;
-  }
-
-}
-.leftBanner, .rightBanner {
+.banner-box {
   display: inline-block;
   width: 46%;
-  margin: 0px 7px 0px 8px;
+  margin: 10px 7px 0px 8px;
   vertical-align: top;
   padding: 10px;
   box-shadow: 0px 2px 7px $medgray;
   border-radius: 3px;
   min-height: 220px;
 }
-.rightBanner {
 
-}
 
-.loginBlocks {
-    margin-left: 160px;
-    margin-top: 60px;
-
-     .ownerLogin, .mechanicLogin {
+.login-blocks {
+     .user-login {
       background-image: url('/assets/med_dotted.png');
       background-repeat: repeat;
       margin-right: 15px;
@@ -48,11 +34,9 @@ li {
       border-radius: 3px 3px 0px 0px;
       border-bottom: 1px #2E2E2E solid;
     }
-    h2 {
-      font-size: 22px;
+    h2, h5 {
+      color: #7db9e8;
       text-align: center;
-      color: rgba(180, 180, 180, 0.83);
-      text-shadow: -1px -1px 1px #202020;
     }
 
     input {
@@ -61,10 +45,10 @@ li {
       padding-left: 5px;
       width: 200px;
 
-      color: white;
+      color: gray;
       line-height: 28px;
       font-size: 14px;
-      text-shadow: 1px 1px 3px $darkgray;
+
       border-top: 2px $topsplash solid;
       border-right: 2px $rightsplash solid;
       border-left: 2px $leftsplash solid;
@@ -94,6 +78,16 @@ li {
       width: 213px;
       background-color: $splash;
       margin: 20px auto;
+      color: white;
+
+      background: #7db9e8; /* Old browsers */
+      background: -moz-linear-gradient(top,  #7db9e8 0%, #2989d8 52%, #207cca 53%, #1e5799 100%); /* FF3.6+ */
+      background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#7db9e8), color-stop(52%,#2989d8), color-stop(53%,#207cca), color-stop(100%,#1e5799)); /* Chrome,Safari4+ */
+      background: -webkit-linear-gradient(top,  #7db9e8 0%,#2989d8 52%,#207cca 53%,#1e5799 100%); /* Chrome10+,Safari5.1+ */
+      background: -o-linear-gradient(top,  #7db9e8 0%,#2989d8 52%,#207cca 53%,#1e5799 100%); /* Opera 11.10+ */
+      background: -ms-linear-gradient(top,  #7db9e8 0%,#2989d8 52%,#207cca 53%,#1e5799 100%); /* IE10+ */
+      background: linear-gradient(to bottom,  #7db9e8 0%,#2989d8 52%,#207cca 53%,#1e5799 100%); /* W3C */
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7db9e8', endColorstr='#1e5799',GradientType=0 ); /* IE6-9 */
 
     }
     input:hover {
@@ -117,11 +111,9 @@ li {
     a {
       text-decoration: none;
     }
-
      
     img {
       width: 40px;
-
     }
     img:active {
       border: 1px 1px black solid;
@@ -133,15 +125,7 @@ li {
     }
     .loginImg {
       display: inline-block;
-      margin-left: 84px;
-      margin-bottom: 10px; 
-    }
-    h6 {
-      color: $lightgray;
-      font-size: 100%;
-      text-shadow: 0px -1px 2px black;
-      margin: 10px 98px 5px;
-      vertical-align: middle;
+      margin: 10px 140px;
     }
 
 }    
