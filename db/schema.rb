@@ -14,24 +14,21 @@
 ActiveRecord::Schema.define(:version => 20120924200759) do
 
   create_table "appointments", :force => true do |t|
-    t.date     "scheduled_date"
-    t.date     "date"
-    t.time     "scheduled_start_time"
-    t.time     "time"
-    t.time     "scheduled_end_time"
-    t.datetime "created_at",                                  :null => false
-    t.datetime "updated_at",                                  :null => false
+    t.datetime "owner_start",                 :default => '2012-09-27 16:30:48'
+    t.datetime "owner_end",                   :default => '2012-09-27 17:30:48'
     t.text     "owner_notes"
     t.text     "mechanic_notes"
-    t.string   "status",                  :default => "Open"
-    t.time     "availability_start_time"
-    t.time     "availability_end_time"
-    t.integer  "vehicle_id"
-    t.integer  "mechanic_id"
-    t.integer  "owner_id"
+    t.integer  "mileage",        :limit => 6
+    t.integer  "status",                      :default => 1,                     :null => false
     t.string   "street"
     t.string   "city"
-    t.string   "zip"
+    t.string   "zip",            :limit => 7
+    t.string   "state",          :limit => 2
+    t.integer  "vehicle_id",                                                     :null => false
+    t.integer  "mechanic_id"
+    t.integer  "owner_id",                                                       :null => false
+    t.datetime "created_at",                                                     :null => false
+    t.datetime "updated_at",                                                     :null => false
   end
 
   create_table "mechanics", :force => true do |t|
