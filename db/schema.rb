@@ -11,12 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120924200759) do
+ActiveRecord::Schema.define(:version => 20120920184320) do
 
   create_table "appointments", :force => true do |t|
-    t.datetime "owner_start",                 :default => '2012-09-27 16:30:48'
-    t.datetime "owner_end",                   :default => '2012-09-27 17:30:48'
+    t.datetime "owner_start",                 :default => '2012-09-27 18:33:49'
+    t.datetime "owner_end",                   :default => '2012-09-27 19:33:49'
     t.text     "owner_notes"
+    t.datetime "mechanic_start"
+    t.datetime "mechanic_end"
     t.text     "mechanic_notes"
     t.integer  "mileage",        :limit => 6
     t.integer  "status",                      :default => 1,                     :null => false
@@ -33,13 +35,16 @@ ActiveRecord::Schema.define(:version => 20120924200759) do
 
   create_table "mechanics", :force => true do |t|
     t.string   "company_name"
-    t.string   "address"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "street"
     t.string   "city"
-    t.string   "state"
+    t.integer  "zip",           :limit => 7
+    t.string   "state",         :limit => 2
     t.string   "phone_number"
-    t.string   "email_address"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.string   "email_address",              :null => false
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
   end
 
   create_table "owners", :force => true do |t|
@@ -54,14 +59,15 @@ ActiveRecord::Schema.define(:version => 20120924200759) do
   create_table "vehicles", :force => true do |t|
     t.string   "make"
     t.string   "model"
-    t.integer  "year"
-    t.string   "oil_type"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
-    t.string   "license_plate"
-    t.string   "vin_number"
+    t.integer  "year",          :limit => 4
+    t.string   "color"
+    t.string   "license_plate", :limit => 7
+    t.string   "vin_number",    :limit => 17
+    t.integer  "oil_type",                    :default => 1
     t.text     "notes"
-    t.integer  "owner_id"
+    t.integer  "owner_id",                                   :null => false
+    t.datetime "created_at",                                 :null => false
+    t.datetime "updated_at",                                 :null => false
   end
 
 end
