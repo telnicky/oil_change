@@ -8,12 +8,26 @@ class Appointment < ActiveRecord::Base
   belongs_to  :mechanic
 
   has_many    :owners, :through => :appointments
-  #validates :scheduled_date, :presence => true 
-  validate :scheduled_date_in_future
-  
+
+  validates :owner_start, :presence => true
+  validates :owner_end, :presence => true
+  validates :mechanic_start, :presence => true
+  validates :mechanic_end, :presence => true
+  validates :vehicle_id, :presence => true
+  validates :owner_id, :presence => true
+  validates :status, :presence => true
+  validates :street, :presence => true
+  validates :city, :presence => true
+  validates :zip, :presence => true
+
+
+  validate :owner_start_in_future
+    
+
   STATUS = { 1 => "Open", 2 => "Reserved", 3 => "Job Complete"}.freeze
 
-  def scheduled_date_in_future
+
+  def owner_start_in_future
     if owner_start.present?
       errors.add("We cannot go back in time to change your oil.") if owner_start < Date.today
     end

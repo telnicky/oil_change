@@ -1,8 +1,8 @@
 class CreateAppointments < ActiveRecord::Migration
   def change
     create_table :appointments do |t|
-      t.datetime "owner_start"      
-      t.datetime "owner_end" 
+      t.datetime "owner_start"
+      t.datetime "owner_end"
       t.text     "owner_notes"
       
       t.datetime "mechanic_start"
@@ -20,6 +20,7 @@ class CreateAppointments < ActiveRecord::Migration
       t.integer  "vehicle_id", :null => false
       t.integer  "mechanic_id"
       t.integer  "owner_id", :null => false
+
 
       t.timestamps
     end
