@@ -1,7 +1,5 @@
 
-<!--##################### START BODY & VIEWS ############################################################################ -->    
-
-
+<!--##################### START BODY & VIEWS ################################################################### -->    
 <%= form_for(@appointment, :html => {:class => "form-horizontal"}) do |f| %>
   <fieldset>
     <%= f.hidden_field :owner_id, :value => params[:owner_id] %>
@@ -27,34 +25,28 @@
           <%= f.text_field :zip %>
         </div>
       </div>
-      <div class="control-group-right" onload="initialize()"> 
+    <!--  <div class="control-group-right" onload="initialize()"> 
         <div class="controls">
           <div id="map_canvas" style="width:500px; height:300px" ></div>
         </div>
       </div>
-    </div>
+    </div> -->
 <!--##################### TIME & DATE ############################################################################ -->    
   <h3>What time will your vehicle be available?</h3>
     <div class="control-group">
-      <%= f.label :scheduled_date, :class => "control-label" %>
+      <%= f.label "What time will your vehicle be available?", :class => "control-label" %>
       <div class="controls">
-        <%= f.text_field :scheduled_date, :id => 'datepicker', :format => :short_date %>
+        <%= f.text_field :owner_start, :class => 'datepicker', :format => :short_date %>
       </div>
     </div>
 
     <div class="control-group">
-      <%= f.label :scheduled_start_time, :class => "control-label"  %>
+      <%= f.label "How long will your vehicle be available?", :class => "control-label"  %>
       <div class="controls">
-        <%= f.text_field :scheduled_start_time, :class => 'timepicker', :format => :short_time  %>
+        <%= f.text_field :owner_end, :class => 'datepicker', :format => :short_time  %>
       </div>
     </div>
 
-    <div class="control-group">
-      <%= f.label :scheduled_end_time, :class => "control-label" %>
-      <div class="controls">
-        <%= f.text_field :scheduled_end_time, :class => 'timepicker', :format => :short_time %>
-      </div>
-    </div>
   <h3>What information would you like the mechanic to know?</h3>
     <div class="control-group">
       <%= f.label :owner_notes, :class => "control-label" %>
@@ -71,16 +63,16 @@
     </div>
 
     <div class="control-group">
-      <%= f.label :availability_start_time, :class => "control-label" %>
+      <%= f.label :mechanic_start, :class => "control-label" %>
       <div class="controls">
-        <%= f.text_field :availability_start_time %>
+        <%= f.text_field :mechanic_start %>
       </div>
     </div>
 
     <div class="control-group">
-      <%= f.label :availability_end_time, :class => "control-label" %>
+      <%= f.label :mechanic_end, :class => "control-label" %>
       <div class="controls">
-        <%= f.text_field :availability_end_time %>
+        <%= f.text_field :mechanic_end %>
       </div>
     </div> -->
 
