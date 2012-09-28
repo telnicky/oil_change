@@ -1,5 +1,9 @@
 OilChange::Application.routes.draw do
   
+  devise_for :mechanics
+
+  devise_for :owners
+
   get "home/index"
   get "mechanics/add_job"
   get "mechanics/remove_job"
