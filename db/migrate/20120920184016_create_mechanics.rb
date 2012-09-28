@@ -11,7 +11,6 @@ class CreateMechanics < ActiveRecord::Migration
       t.string   "state", :limit => 2
 
       t.string   "phone_number"
-      t.string   "email_address", :null => false
 
       t.timestamps
     end

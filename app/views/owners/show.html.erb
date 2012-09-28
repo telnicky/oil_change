@@ -4,7 +4,7 @@
       <h1>Welcome</h1>
       First name:     <%= @owner.first_name %>    <br/>
       Last name:      <%= @owner.last_name %>     <br/>
-      Email address:  <%= @owner.email_address %> <br/>
+      Email address:  <%= @owner.email %> <br/>
       Phone number:   <%= @owner.phone_number %>  <br/>
       
       <%= link_to "Add a Vehicle", new_vehicle_path(:owner_id => @owner.id), :class => 'btn btn-success btn-small btn-block' %>
