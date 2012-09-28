@@ -1,5 +1,6 @@
 class MechanicsController < ApplicationController
   respond_to :html
+  before_filter :authenticate_mechanic!
 
   def create
     @mechanic = Mechanic.new(params[:mechanic])

@@ -24,9 +24,22 @@
     <div class="span4 banner-box">
       <form name="owner_Login">
         <h2>Vehicle Owner Login</h2>
-        <input id="top" type="text" placeholder="Email"</input>
+        <%= form_for(@resource, :as => @resource_name, :url => session_path(@resource_name)) do |f| %>
+          <div><%= f.email_field :email, :id => 'top', :placeholder => 'Email' %></div>
+
+          <div><%= f.password_field :password, :id => 'bottom', :placeholder => 'Password' %></div>
+
+          <% if @devise_mapping.rememberable? -%>
+            <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
+          <% end -%>
+
+          <div><%= f.submit "Sign in" %></div>
+        <% end %>
+
+<!-- Old form html -->
+<!--         <input id="top" type="text" placeholder="Email"</input>
         <input id="bottom" type="text" placeholder="Password"></input>
-        <input type="button" value="Sign In"></input>
+        <input type="button" value="Sign In"></input> -->
       </form>  
         <h5>Sign in with:</h5>
         <div class="loginImg">
