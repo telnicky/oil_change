@@ -38,23 +38,15 @@
 <!--##################### TIME & DATE ############################################################################ -->    
   <h3>What time will your vehicle be available?</h3>
     <div class="control-group">
-      <%= f.label :scheduled_date, :class => "control-label" %>
+      <%= f.label :owner_start, :class => "control-label" %>
       <div class="controls">
-        <%= f.text_field :scheduled_date, :id => 'datepicker' %>
+        <%= f.text_field :owner_start, :id => 'datepicker' %>
       </div>
     </div>
-
     <div class="control-group">
-      <%= f.label :scheduled_start_time, :class => "control-label"  %>
+      <%= f.label :mechanic_end, :class => "control-label" %>
       <div class="controls">
-        <%= f.text_field :scheduled_start_time, :class => 'timepicker' %>
-      </div>
-    </div>
-
-    <div class="control-group">
-      <%= f.label :scheduled_end_time, :class => "control-label" %>
-      <div class="controls">
-        <%= f.text_field :scheduled_end_time, :class => 'timepicker' %>
+        <%= f.text_field :mechanic_end, :class => 'timepicker' %>
       </div>
     </div>
   <h3>What information would you like the mechanic to know?</h3>

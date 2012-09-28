@@ -37,25 +37,22 @@ class MechanicsController < ApplicationController
     respond_with(@mechanic)
   end
 
-
-
-
   def add_job
     appointment = Appointment.find(params[:appointment_id])
-    appointment.update_attributes(:status => "reserved", :mechanic_id => params[:id])
+    appointment.update_attributes(:status => 2, :mechanic_id => params[:id])
 
     redirect_to :back
   end
   
   def remove_job
     appointment = Appointment.find(params[:appointment_id])
-    appointment.update_attributes(:status => "Open", :mechanic_id => "")
+    appointment.update_attributes(:status => 1, :mechanic_id => "")
     redirect_to :back
   end
 
   def complete_job
     appointment = Appointment.find(params[:appointment_id])
-    appointment.update_attributes(:status => "completed")
+    appointment.update_attributes(:status => 3)
     redirect_to :back
   end  
 end

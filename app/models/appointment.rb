@@ -1,7 +1,7 @@
 class Appointment < ActiveRecord::Base
-  attr_accessible :street, :city, :zip , :owner_notes, :owner_start, :owner_end
-  attr_accessible :owner_id, :vehicle_id, :mechanic_notes, :status
-  attr_accessible :mechanic_id
+  attr_accessible :street, :city, :zip, :owner_notes
+  attr_accessible :owner_start, :owner_end, :mechanic_start, :mechanic_end, :mechanic_notes, :status
+  attr_accessible :mechanic_id, :owner_id, :vehicle_id
 
   
   belongs_to  :vehicle
@@ -21,17 +21,10 @@ class Appointment < ActiveRecord::Base
   validates :zip, :presence => true
 
 
-
   validate :owner_start_in_future
-  
-  
+    
 
-
-
-
-  STATUS = { 1 => "available", 2 => "pending", 3 => "complete"}.freeze
-
-  
+  STATUS = { 1 => "Open", 2 => "Reserved", 3 => "Job Complete"}.freeze
 
 
   def owner_start_in_future

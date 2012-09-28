@@ -10,7 +10,7 @@
             Year:             <%=  v.year %>          <br/>
             License Plate #:  <%=  v.license_plate %> <br/>
             VIN Number:       <%=  v.vin_number %>    <br/>  
-            Oil Type:         <%=  v.oil_type %>      <br/>
+            Oil Type:         <%=  Vehicle::OIL_TYPE[v.oil_type] %>      <br/>
             Notes:  <div class="note">    <%=  v.notes %>  </div><br/>   
             
             
