@@ -3,9 +3,23 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import 'colorkey.scss';
 
+
 .content-wrapper {
   padding: 10px;
   border: 1px $lightgray dashed;
+}
+
+.form-links {
+  a {
+    font-size: 13px;
+  }
+}
+
+.remember-me {
+  label {
+    display: inline-block;
+    font-size: 13px;
+  }
 }
 
 .welcome-user {

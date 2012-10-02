@@ -9,6 +9,31 @@
         <li>Step 4. Do anything you want, but wait around at a oil shop</li>
       </ul> 
     </div>  
+
+    <div class="span4 banner-box">
+      <h2>Sign in</h2>
+
+      <%= form_for('owner', :as => :owner, 
+                             :url => session_path(:owner),
+                             :html => {:class => 'form-horizontal'}) do |f| %>
+
+        <div><%= f.email_field :email, :placeholder => 'Email' %></div>
+
+        <div><%= f.password_field :password, :placeholder => 'Password'  %></div>
+
+        <div class="remember-me"><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
+        
+
+        <div><%= f.submit "Sign in" %></div>
+      <% end %>
+      <div class='form-links'>
+        <%= link_to "Sign up", new_registration_path(:owner) %> |
+        <%= link_to "Forgot your password?", new_password_path(:owner) %> |
+        <%= link_to "Sign in with facebook", omniauth_authorize_path(:owner, :facebook) %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
     <div class="span4 banner-box">
       <h1>Mechanic Instructions</h1>
       <ul>
@@ -17,41 +42,29 @@
         <li>Step 3. Change Oil</li>
         <li>Step 4. Make money!</li>
       </ul> 
-    </div>
-  </div>
-
-  <div class="row login-blocks">
-    <div class="span4 banner-box">
-      <form name="owner_Login">
-        <h2>Vehicle Owner Login</h2>
-        <input id="top" type="text" placeholder="Email"</input>
-        <input id="bottom" type="text" placeholder="Password"></input>
-        <input type="button" value="Sign In"></input>
-      </form>  
-        <h5>Sign in with:</h5>
-        <div class="loginImg">
-          <a href="#"> <img src="/assets/facebook_login_lte.png" /> </a>
-          <a href="#"> <img src="/assets/twitter_login_lte.png" />  </a>
-          <a href="#"> <img src="/assets/googleplus_login_lte2.png" /></a>
-        </div>
     </div>  
 
-  <div class="span4 banner-box">
-    <form name="mechanic_Login">
-      <h2>Mechanic Login</h2>
-      <input id="top" type="text" placeholder="Email"></input>
-      <input id="bottom" type="text" placeholder="Password"></input>
-      <input type="button" value="Sign In"></input>
-    </form> 
-      <h5>Sign in with:</h5>
-      <div class="loginImg">
-        <a href="#"> <img src="/assets/facebook_login_lte.png" /> </a>
-        <a href="#"> <img src="/assets/twitter_login_lte.png" />  </a>
-        <a href="#"> <img src="/assets/googleplus_login_lte2.png" /></a>
+    <div class="span4 banner-box">
+      <h2>Sign in</h2>
+
+      <%= form_for('mechanic', :as => :mechanic, 
+                             :url => session_path(:mechanic),
+                             :html => {:class => 'form-horizontal'}) do |f| %>
+
+        <div><%= f.email_field :email, :placeholder => 'Email' %></div>
+
+        <div><%= f.password_field :password, :placeholder => 'Password'  %></div>
+
+        <div class="remember-me"><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
+        
+
+        <div><%= f.submit "Sign in" %></div>
+      <% end %>
+      <div class='form-links'>
+        <%= link_to "Sign up", new_registration_path(:mechanic) %> |
+        <%= link_to "Forgot your password?", new_password_path(:mechanic) %>
       </div>
-  </div>       
-
-
+    </div>
   </div>
-
 </div>  
+

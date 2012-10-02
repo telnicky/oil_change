@@ -1,15 +1,17 @@
 OilChange::Application.routes.draw do
   
   devise_for :mechanics
-
-  devise_for :owners
+  devise_for :owners, :controllers => { :omniauth_callbacks => "owners/omniauth_callbacks" }
+  
 
   get "home/index"
   get "mechanics/add_job"
   get "mechanics/remove_job"
   get "mechanics/complete_job"
+  
   resources :appointments, :mechanics, :owners, :vehicles
 
+  root :to => 'home#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -60,7 +62,6 @@ OilChange::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'home#index'
 
   # See how all your routes lay out with "rake routes"
 

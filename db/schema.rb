@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120928155848) do
+ActiveRecord::Schema.define(:version => 20120928201026) do
 
   create_table "appointments", :force => true do |t|
     t.datetime "owner_start"
@@ -42,7 +42,6 @@ ActiveRecord::Schema.define(:version => 20120928155848) do
     t.integer  "zip",                    :limit => 7
     t.string   "state",                  :limit => 2
     t.string   "phone_number"
-    t.string   "email_address",                                       :null => false
     t.datetime "created_at",                                          :null => false
     t.datetime "updated_at",                                          :null => false
     t.string   "email",                               :default => "", :null => false
@@ -55,6 +54,10 @@ ActiveRecord::Schema.define(:version => 20120928155848) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "unconfirmed_email"
   end
 
   add_index "mechanics", ["email"], :name => "index_mechanics_on_email", :unique => true
@@ -77,8 +80,15 @@ ActiveRecord::Schema.define(:version => 20120928155848) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "unconfirmed_email"
+    t.string   "provider"
+    t.string   "uid"
   end
 
+  add_index "owners", ["confirmation_token"], :name => "index_owners_on_confirmation_token", :unique => true
   add_index "owners", ["email"], :name => "index_owners_on_email", :unique => true
   add_index "owners", ["reset_password_token"], :name => "index_owners_on_reset_password_token", :unique => true
 

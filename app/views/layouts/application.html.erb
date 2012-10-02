@@ -70,7 +70,18 @@
       <div class="headerBody">
         <img src="/assets/car.png" />
         <h3>Mobile Oil Change</h3> 
-        <div class="userInfo"> Login Info | Log Out <br/> <%= DateTime.now.strftime('%A, %B %d - %I:%M %p') %></div>
+        <div class="userInfo"> 
+          <% if(owner_signed_in?) %>
+            <%= link_to("#{current_owner.first_name} #{current_owner.last_name}", owner_path(current_owner)) %> |
+            <%= link_to 'Log Out', destroy_owner_session_path, :method => :delete %> <br/> 
+          <% elsif(mechanic_signed_in?) %>
+            <%= link_to("#{current_mechanic.first_name} #{current_mechanic.last_name}", mechanic_path(current_mechanic)) %> |
+            <%= link_to 'Log Out', destroy_mechanic_session_path, :method => :delete %> <br/> 
+          <% else %>  
+            <%= yield :login %>
+          <% end %>
+          <%= DateTime.now.strftime('%A, %B %d - %I:%M %p') %>
+        </div>
       </div>  
     </div>
   </header>
