@@ -2,11 +2,13 @@ OilChange::Application.routes.draw do
   
   devise_for :mechanics
   devise_for :owners, :controllers => { :omniauth_callbacks => "owners/omniauth_callbacks" }
+  
 
   get "home/index"
   get "mechanics/add_job"
   get "mechanics/remove_job"
   get "mechanics/complete_job"
+  
   resources :appointments, :mechanics, :owners, :vehicles
 
   root :to => 'home#index'
