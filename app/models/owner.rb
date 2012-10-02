@@ -10,7 +10,7 @@ class Owner < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :password, :password_confirmation, :remember_me,
                   :first_name, :last_name, :email, :phone_number,
-                  :provider, :uid
+                  :provider, :uid, :email_address
 
   has_many :vehicles, :dependent => :destroy
   has_many :appointments, :through => :vehicles, :dependent => :destroy
