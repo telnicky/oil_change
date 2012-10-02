@@ -1,16 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Mobile Oil Change</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
+    <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
-  <%= javascript_include_tag :defaults %>
- 
+  <%#= javascript_include_tag :defaults %>
   <%= javascript_include_tag 'rails' %>
-  <%= javascript_include_tag 'http://maps.googleapis.com/maps/api/js?key=AIzaSyAJXNiTBM1wkZZFwwSM3dB1IyPAqed69_E&sensor=true' %>
   <%= csrf_meta_tags %>
+  <!-- START GOOGLE MAPS API -->
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+  
+
+    <style type="text/css">
+      #map_canvas { height: 350px; width: 80%; }
+      .map_canvas { height: 350px; width: 720px; }
+    </style>
+  <%= javascript_include_tag 'http://maps.googleapis.com/maps/api/js?key=AIzaSyAJXNiTBM1wkZZFwwSM3dB1IyPAqed69_E&sensor=false' %>
+  <script type="text/javascript">
+      
+  var latlng = new google.maps.LatLng(40.303467, -111.66164);
+  var map = "";
+    function initialize() {
+      var mapOptions = {
+        center: latlng,
+        zoom: 16,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      };
+    
+    map = new google.maps.Map(document.getElementById("map_canvas"),
+          mapOptions);
+    };
+
+    $(function(){ 
+
+      function getNewLatLng() {
+        var address = ($('#street').val() || "") + " " + ($('#city').val() || "") + " " +  ($('#zip').val() || "");
+        var geocoder = new google.maps.Geocoder();
+        var geo = geocoder.geocode({'address' : address}, function(results, status){
+
+            if (status == google.maps.GeocoderStatus.OK) {
+              console.log(results);
+              console.log(results.geometry);
+                map.setCenter(new google.maps.LatLng(results[0].geometry.location.Xa, results[0].geometry.location.Ya), 13); 
+            } else {
+                alert("Geocode was not successful for the following reason: " + status);
+              };
+        });
+      };
+
+
+      $('#zip').change(getNewLatLng);
+      $('#city').change(getNewLatLng);
+      $('#street').change(getNewLatLng);
+    
+    });  
+    </script>
+  <!-- END GOOGLE MAPS API -->
+
+
+
+
+
+
+  <title>Mobile Oil Change</title>
+
 </head>
-<body>
+<body onload="initialize()">
   <header>
     <div class="header"> 
       <div class="headerBody">
