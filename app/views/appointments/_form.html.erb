@@ -1,6 +1,3 @@
-
-
-
 <!--##################### START BODY & VIEWS ################################################################### -->    
 <%= form_for(@appointment, :html => {:class => "form-horizontal"}) do |f| %>
   <fieldset>
@@ -31,18 +28,20 @@
     <div id="map_canvas"></div>
    
 <!--##################### TIME & DATE ############################################################################ -->    
-  <h3>What time will your vehicle be available?</h3>
+  <h3>Schedule the date and time frame for your oil change.</h3>
     <div class="control-group">
-      <%= f.label "What time will your vehicle be available?", :class => "control-label" %>
+      <%= f.label "What day do you want your oil change?", :class => "control-label" %>
       <div class="controls">
-        <%= f.text_field :owner_start, :class => 'datepicker', :format => :short_date %>
+        <%=  datetime_select :owner_start, :date, :order => [:month, :day], :discard_year => true %>
+        <br/>
       </div>
     </div>
 
     <div class="control-group">
-      <%= f.label "How long will your vehicle be available?", :class => "control-label"  %>
+      <%= f.label "What time will your vehicle be available?", :class => "control-label"  %>
       <div class="controls">
-        <%= f.text_field :owner_end, :class => 'datepicker', :format => :short_time  %>
+        To:
+        <%= datetime_select :owner_end, :time, :ampm => true, :default => 2.hours.from_now, :discard_year => true, :class => "end-time-select"  %>
       </div>
     </div>
 

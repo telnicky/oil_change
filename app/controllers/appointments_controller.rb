@@ -3,14 +3,17 @@ class AppointmentsController < ApplicationController
   
   def new
     @appointment = Appointment.new
+
   end
   
   def create
     appointment = params[:appointment]
+
     #appointment[:scheduled_date] = Date.strptime(appointment[:scheduled_date], '%m/%d/%Y')
     #appointment[:scheduled_start_time] = Time.parse(appointment[:scheduled_start_time])
     #appointment[:scheduled_end_time] = Time.parse(appointment[:scheduled_end_time])
     @appointment = Appointment.new(appointment)
+    binding.pry
     @appointment.save!
     redirect_to owner_path(@appointment.owner_id)
   end
