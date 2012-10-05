@@ -11,8 +11,6 @@ class Appointment < ActiveRecord::Base
 
   validates :owner_start, :presence => true
   validates :owner_end, :presence => true
-  validates :mechanic_start, :presence => true
-  validates :mechanic_end, :presence => true
   validates :vehicle_id, :presence => true
   validates :owner_id, :presence => true
   validates :status, :presence => true
