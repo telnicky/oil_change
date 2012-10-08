@@ -9,7 +9,7 @@ var AppointmentsView = Backbone.View.extend({
   },
 
   render: function() {
-    console.log(this.$el);
+    console.log(this.collection);
     this.$el.append('View!!!!!!!!');
     return this;
   }
