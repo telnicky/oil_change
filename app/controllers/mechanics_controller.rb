@@ -1,5 +1,5 @@
 class MechanicsController < ApplicationController
-  respond_to :html
+  respond_to :html, :json
   before_filter :authenticate_mechanic!
 
   def create
@@ -27,8 +27,8 @@ class MechanicsController < ApplicationController
 
   def show
     @mechanic = Mechanic.find(params[:id])
-    @available_appointments = Appointment.find_all_by_status(Appointment::STATUS[1])
-
+    @appointments = Appointment.all
+    respond_with(@mechanic)
   end
 
   def update

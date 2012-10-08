@@ -1,3 +1,3 @@
-var mechanic = Backbone.model.extend({
+var mechanic = Backbone.Model.extend({
   urlRoot: '/mechanics'
 });

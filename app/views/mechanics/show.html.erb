@@ -1,3 +1,13 @@
+<% content_for :header do %>
+<%= javascript_include_tag 'mechanicShow.js'%>
+<% end %>
+
+
+<script type="text/javascript">
+  var appointments = new Appointments;
+  appointments.reset(<%= json_escape(@appointments.to_json).html_safe %>);
+</script> 
+
 <div class='container'>
   <div class='row welcome-mechanic'>
     <div class="span4">
@@ -10,6 +20,9 @@
       <%= @mechanic.phone_number %> <br/>
     </div>
   </div>
+
+  <div class="mechanic-appointments-container"></div>
+
   <div class="row">  
     <h3>Oil Change Requests</h3>  
       <div class="span11 set-height">

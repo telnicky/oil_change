@@ -1,5 +1,5 @@
 class AppointmentsController < ApplicationController
-  respond_to :html
+  respond_to :html, :json
   
   def new
     @appointment = Appointment.new
@@ -22,7 +22,6 @@ class AppointmentsController < ApplicationController
   def show
     @appointment = Appointment.find(params[:id])
     @appointments = Appointment.all
-
   end
 
   def edit 

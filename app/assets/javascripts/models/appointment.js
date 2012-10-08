@@ -1,7 +1,7 @@
-var appointment = Backbone.model.extend({
-  urlRoot: '/appointments'
+var Appointment = Backbone.Model.extend({
+  urlRoot: '/appointments',
 
-  defaults {
+  defaults: {
     'street': '',
     'city': '',
     'zip': '',
