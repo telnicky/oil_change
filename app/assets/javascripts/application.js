@@ -16,4 +16,6 @@
 //= require backbone
 //= require_tree ./models
 //= require_tree ./collections
+//= require ./views/ListView
+//= require ./views/ListItemView
 //= require_tree ./views

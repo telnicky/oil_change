@@ -1,11 +1,19 @@
 
-var AppointmentsView = Backbone.View.extend({
+var AppointmentsView = ListView.extend({
 
   className: 'mechanic-appointments',
 
+  constructor: function AppointmentsView () {
+    ListView.apply(this , arguments);
+  },
+
   initialize: function() {
-    // this.build();
+    this.build();
     this.render();
+  },
+
+  build: function() {
+
   },
 
   render: function() {
