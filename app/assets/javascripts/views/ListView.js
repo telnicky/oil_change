@@ -18,4 +18,6 @@ var ListView = Backbone.View.extend({
 
 });
 
-new ListView({ collection: something, itemView: SomeListItemView})
+
+// don't need a listItem view just do this with this.options.itemView
+//new ListView({ collection: something, itemView: SomeListItemView})
