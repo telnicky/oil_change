@@ -1,5 +1,6 @@
 class MechanicsController < ApplicationController
-  respond_to :html
+  respond_to :html, :json
+  before_filter :authenticate_mechanic!
 
   def create
     @mechanic = Mechanic.new(params[:mechanic])
@@ -26,8 +27,8 @@ class MechanicsController < ApplicationController
 
   def show
     @mechanic = Mechanic.find(params[:id])
-    @available_appointments = Appointment.find_all_by_status(Appointment::STATUS[1])
-
+    @appointments = Appointment.all
+    respond_with(@mechanic)
   end
 
   def update
@@ -36,25 +37,22 @@ class MechanicsController < ApplicationController
     respond_with(@mechanic)
   end
 
-
-
-
   def add_job
     appointment = Appointment.find(params[:appointment_id])
-    appointment.update_attributes(:status => "reserved", :mechanic_id => params[:id])
+    appointment.update_attributes(:status => 2, :mechanic_id => params[:id])
 
     redirect_to :back
   end
   
   def remove_job
     appointment = Appointment.find(params[:appointment_id])
-    appointment.update_attributes(:status => "Open", :mechanic_id => "")
+    appointment.update_attributes(:status => 1, :mechanic_id => "")
     redirect_to :back
   end
 
   def complete_job
     appointment = Appointment.find(params[:appointment_id])
-    appointment.update_attributes(:status => "completed")
+    appointment.update_attributes(:status => 3)
     redirect_to :back
   end  
 end

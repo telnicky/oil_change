@@ -11,6 +11,11 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
-//= require jquery_ujs
 //= require twitter/bootstrap
-//= require_tree .
+//= require underscore
+//= require backbone
+//= require_tree ./models
+//= require_tree ./collections
+//= require ./views/ListView
+//= require ./views/ListItemView
+//= require_tree ./views

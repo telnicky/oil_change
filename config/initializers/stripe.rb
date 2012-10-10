@@ -1,0 +1,4 @@
+Stripe.api_key = "sk_QL04yU1hG8RgS6jPmAHs2J5iMlIdc"
+
+STRIPE_PUBLISHABLE_KEY = "pk_b4Kw7ff4V6MEu47nfE37wqY8K5kr2"
+

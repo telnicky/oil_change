@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Mobile Oil Change</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  
+  <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag :defaults %>
+  <%= javascript_include_tag 'rails' %>
+  <%= javascript_include_tag 'http://maps.googleapis.com/maps/api/js?key=AIzaSyAJXNiTBM1wkZZFwwSM3dB1IyPAqed69_E&sensor=true' %>
+
+  <%= csrf_meta_tags %>
+  
+  <%= yield :header %>
+</head>
+<body>
+  <header>
+    <div class="header"> 
+      <div class="headerBody">
+        <img src="/assets/car.png" />
+        <h3>Mobile Oil Change</h3> 
+        <div class="userInfo"> 
+          <% if(mechanic_signed_in?) %>
+            <%= link_to("#{current_mechanic.first_name} #{current_mechanic.last_name}", mechanic_path(current_mechanic)) %> |
+            <%= link_to 'Log Out', destroy_mechanic_session_path, :method => :delete %> <br/> 
+          <% else %>  
+            <%= yield :login %>
+          <% end %>
+          <%= DateTime.now.strftime('%A, %B %d - %I:%M %p') %>
+        </div>
+      </div>  
+    </div>
+  </header>
+ 
+  <div class="flash-header">
+    <% if flash[:notice] %>
+      <p class="notice"><%= flash[:notice] %></p>
+    <% end %>
+    <% if flash[:error] %>
+      <p class="error"><%= flash[:error] %></p>
+    <% end %>
+  </div>
+
+
+
+  <div id="yield">
+    <%= yield %>
+  </div>
+  
+
+ <!-- <footer>
+    <div class="footer">
+      <div class="footerBody">
+        All rights reserved 2012 
+      </div>
+    </div>
+  </footer> -->
+</body>
+</html>

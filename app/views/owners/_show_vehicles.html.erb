@@ -4,19 +4,36 @@
 <% end %>
 
 <% @vehicles.each do |v| %>
-      <div class="span3 vehicle-list">
-            Make:             <%=  v.make %>          <br/>
-            Model:            <%=  v.model %>         <br/>
-            Year:             <%=  v.year %>          <br/>
-            License Plate #:  <%=  v.license_plate %> <br/>
-            VIN Number:       <%=  v.vin_number %>    <br/>  
-            Oil Type:         <%=  v.oil_type %>      <br/>
+      <div class="span4 vehicle-list">
+         <div class="vehicle-icon">
+            <img src="/assets/oil.png">
+            <img src="/assets/car_display.png">
+            <img src="/assets/appointment.png">
+         </div> 
+         <div class="vehicle-info">
+            <div class="v-info">
+              <span>Make:</span>     <%=  v.make %>         <br/>
+              <span>Model:</span>    <%=  v.model %>        <br/>
+              <span>Year:</span>     <%=  v.year %>         <br/>
+              <span>Color:</span>     <%=  v.color %>         <br/>
+              <span>Mileage:</span>    Add to Database         <br/>
+            </div>
+            <div class="v-id">
+              <span>License Plate #:</span>  <%=  v.license_plate %> <br/>
+              <span>VIN Number:</span>       <%=  v.vin_number %>    <br/> 
+            </div>  
+            <div class="v-oil">
+              <span>Oil Type:</span>         <%=  Vehicle::OIL_TYPE[v.oil_type] %>      <br/>
+            </div>
+          </div> 
+          <div class="vehicle-note"> 
             Notes:  <div class="note">    <%=  v.notes %>  </div><br/>   
-            
-            
+          </div>  
+          <div class="vehicle-admin">  
             <%= link_to "Schedule Oil Change", new_appointment_path(:vehicle_id => v.id, :owner_id => @owner.id), :class => 'btn btn-success btn-small btn-block' %>
             <%= link_to "Edit Vehicle", edit_vehicle_path(:vehicle_id => v.id, :owner_id => @owner.id), :class => 'btn btn-primary btn-small' %>
             <%= link_to "Delete Vehicle", vehicle_path( :id => v.id, :owner_id => @owner.id), :method => 'delete', :confirm => 'This will permanently delete all data and history about this vehicle.  Are you sure?', :class => 'btn btn-inverse btn-small' %>
+          </div>  
       </div>
       <div class="appointment-view">
       </div>

@@ -1,18 +1,18 @@
 class Appointment < ActiveRecord::Base
-  attr_accessible :street, :city, :zip , :owner_notes, :scheduled_date, :scheduled_end_time, :scheduled_start_time
-  attr_accessible :availability_end_time, :owner_id, :availability_start_time, :vehicle_id, :mechanic_notes, :status
-  attr_accessible :mechanic_id
+  attr_accessible :street, :city, :zip, :owner_notes
+  attr_accessible :owner_start, :owner_end, :mechanic_start, :mechanic_end, :mechanic_notes, :status
+  attr_accessible :mechanic_id, :owner_id, :vehicle_id
 
-  
   belongs_to  :vehicle
   belongs_to  :mechanic
-
   has_many    :owners, :through => :appointments
-  #validates :scheduled_date, :presence => true 
-  #validates :owner_start, :presence => true
-  #validates :owner_end, :presence => true
-  #validates :mechanic_start, :presence => true
-  #validates :mechanic_end, :presence => true
+  has_one     :payment
+
+    # validates :owner_start, :presence => true
+    # validates :owner_end, :presence => true
+    # when the appointment is set it doesn't need a mechanic start or end. 
+    # validates :mechanic_start, :presence => true 
+    # validates :mechanic_end, :presence => true
   validates :vehicle_id, :presence => true
   validates :owner_id, :presence => true
   validates :status, :presence => true
@@ -20,24 +20,14 @@ class Appointment < ActiveRecord::Base
   validates :city, :presence => true
   validates :zip, :presence => true
 
+  validate :owner_start_in_future
 
+  STATUS = { 1 => "Open", 2 => "Reserved", 3 => "Job Complete"}.freeze
 
-  validate :scheduled_date_in_future
-  
-  
-
-
-
-
-  STATUS = { 1 => "available", 2 => "pending", 3 => "complete"}.freeze
-
-  
-
-
-  def scheduled_date_in_future
-    if scheduled_date.present?
-      errors.add("We cannot go back in time to change your oil.") if scheduled_date < Date.today
+  def owner_start_in_future
+    if owner_start.present?
+      errors.add("You tried to schedule your appointment in thet past. Try Again.") if owner_start < Date.today
     end
-  end 
+  end
 
 end
