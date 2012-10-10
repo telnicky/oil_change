@@ -1,57 +1,58 @@
-
 <!--##################### START BODY & VIEWS ################################################################### -->    
 <%= form_for(@appointment, :html => {:class => "form-horizontal"}) do |f| %>
   <fieldset>
     <%= f.hidden_field :owner_id, :value => params[:owner_id] %>
     <%= f.hidden_field :vehicle_id, :value => params[:vehicle_id] %>
 <!--##################### LOCATION ############################################################################ -->    
-    <h3>Where do you want your oil changed?</h3>
-    <div class="location">
-      <div class="control-group">
-        <%= f.label :street, :class => "control-label" %>
-        <div class="controls">
-          <%= f.text_field :street %>
+    <h3>Choose the location</h3>
+    <div class="location row">
+      <div class="span4 location-form-box">
+        <div class="control-group">
+          <%= f.label :street, :class => "control-label" %>
+          <div class="controls">
+            <%= f.text_field :street, :id => "street", :value => "100 s state"%>
+          </div>
         </div>
-      </div>
-      <div class="control-group">
-        <%= f.label :city, :class => "control-label" %>
-        <div class="controls">
-          <%= f.text_field :city %>
+        <div class="control-group">
+          <%= f.label :city, :class => "control-label"%>
+          <div class="controls">
+            <%= f.text_field :city, :id => "city", :value => "orem" %>
+          </div>
         </div>
-      </div>
-      <div class="control-group">
-        <%= f.label :zip, :class => "control-label" %>
-        <div class="controls">
-          <%= f.text_field :zip %>
+        <div class="control-group">
+          <%= f.label :zip, :class => "control-label" %>
+          <div class="controls">
+            <%= f.text_field :zip, :id => "zip", :value => "84058" %>
+          </div>
         </div>
-      </div>
-    <!--  <div class="control-group-right" onload="initialize()"> 
-        <div class="controls">
-          <div id="map_canvas" style="width:500px; height:300px" ></div>
-        </div>
-      </div>
-    </div> -->
+      </div>  
+
+    <div class="span8" id="map_canvas"></div>
+   </div>
 <!--##################### TIME & DATE ############################################################################ -->    
-  <h3>What time will your vehicle be available?</h3>
+  <h3>Choose the time</h3>
     <div class="control-group">
-      <%= f.label "What time will your vehicle be available?", :class => "control-label" %>
+      <%= f.label "Select Date:", :class => "control-label" %>
       <div class="controls">
-        <%= f.text_field :owner_start, :class => 'datepicker', :format => :short_date %>
+        <%=  date_select :owner_start_date, "", :order => [:month, :day] %>
+        <br/>
       </div>
     </div>
 
     <div class="control-group">
-      <%= f.label "How long will your vehicle be available?", :class => "control-label"  %>
+      <%= f.label "Select Time:", :class => "control-label"  %>
       <div class="controls">
-        <%= f.text_field :owner_end, :class => 'datepicker', :format => :short_time  %>
+        <%=  time_select :owner_start_time, "", :ampm => true, :discard_year => true, :discard_month => true%> 
+        To:
+        <%= time_select :owner_end_time, "", :ampm => true, :default => 1.hours.from_now, :discard_year => true, :discard_month => true, :class => "end-time-select"  %>
       </div>
     </div>
 
-  <h3>What information would you like the mechanic to know?</h3>
+  <h3>Leave the mechanic a custom message</h3>
     <div class="control-group">
       <%= f.label :owner_notes, :class => "control-label" %>
       <div class="controls">
-        <%= f.text_area :owner_notes %>
+        <%= f.text_area :owner_notes, :cols => 85, :rows => 5 %>
       </div>
     </div>
     <!-- Mechanic form shouldn't be viewed on appointment creation, only when reviewed and changed.

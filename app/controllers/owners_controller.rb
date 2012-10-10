@@ -1,6 +1,6 @@
 class OwnersController < ApplicationController
   respond_to :html
-  before_filter :authenticate_owner!
+  #before_filter :authenticate_owner!
 
   def new
     @owner = Owner.new

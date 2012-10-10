@@ -1,42 +1,55 @@
-<h1>Current Appointments:</h1>
+<h2>Appointments:</h2>
   <div class="appointments-list">
-    <table> 
-      <thead>
-      <tr>
-        <th>Status:     </th>
-        <th>Date:       </th>
-        <th>Time Frame: </th>
-        <th>Vehicle:    </th>
-        <th>Mechanic:   </th>
-        <th>Options:    </th>
-      </tr>
-      </thead>  
-      <tbody>
+    <div class="table"> 
+      
+      <div class="thead">
+        <div class="tr">
+          <div class="th app-status">Status     </div>
+          <div class="th app-date">Date      </div>
+          <div class="th app-time">Time</div>
+          <div class="th app-vehicle">Vehicle    </div>
+          <div class="th app-mechanic">Mechanic   </div>
+          <div class="th app-options">Options    </div>
+        </div>
+      </div>  
+      
+      <div class="tbody">
       <% @appointments.each do |a| %>
-        <tr class="<%= cycle('even', 'odd')%>">
-          <td><%= Appointment::STATUS[a.status] %>                 </td>          
-          <td><% if a.owner_start.present? %>      
-              <%= a.owner_start.strftime("%A %b %d") %>
+        <div class="tr <%= cycle('even', 'odd')%>">
+          <div class="td app-status">
+              <%= Appointment::STATUS[a.status] %>  
+            </div>          
+          <div class="td app-date">
+              <% if a.owner_start.present? %>      
+                <%= a.owner_start.strftime("%A %b %d") %>
               <% end %>  
-              </td>
-          <td><% if a.owner_start.present? %> <% if a.owner_start.present? %>
-                <%= a.owner_end.strftime("%H:%M%p") %> - <%= a.owner_end.strftime("%H:%M%p")  %>     
+            </div>
+          <div class="td app-time">
+              <% if a.owner_start.present? %> <% if a.owner_end.present? %>
+                From: <%= a.owner_start.strftime("%I:%M %p") %></br> to <%= a.owner_end.strftime("%I:%M %p")  %>     
               <% end %> <% end %>
-              </td>
-          <td><%= Vehicle.find(a.vehicle).make  %>, <%= a.vehicle.model %> <br/> <%= a.vehicle.license_plate %>                </td>
-          <td>  <% if a.mechanic_id.nil? %>
-                  <p> ...pending... </p>
-                <% else %>
-                  <%= Mechanic.find(a.mechanic_id).company_name %> 
-                <% end %>  
-          </td>
-          <td>  <%= link_to "Edit Appointment", edit_appointment_path(:appointment_id => a.id, :owner_id => @owner.id), 
-                    :class => "btn btn-primary btn-small" %> 
-                <%= link_to "Delete Appointment", appointment_path( :id => a.id, :owner_id => @owner.id), :method => 'delete', 
+            </div>
+          <div class="td app-vehicle">
+              <span><%= Vehicle.find(a.vehicle).make %></span> <%= a.vehicle.model %> <br/> <%= a.vehicle.license_plate %>                
+            </div>
+          <div class="td app-mechanic">  
+              <% if a.mechanic_id.nil? %>
+                <p> Finding </br> Mechanic </p>
+              <% else %>
+                <%= Mechanic.find(a.mechanic_id).company_name %> 
+              <% end %>  
+            </div>
+          <div class="td app-options">  
+              <%= link_to "Edit", edit_appointment_path(:appointment_id => a.id, :owner_id => @owner.id), 
+                    :class => "btn btn-primary btn-small" %>
+              <%= link_to "Delete", appointment_path( :id => a.id, :owner_id => @owner.id), :method => 'delete', 
                     :confirm => 'Are you sure you want to permanently delete this appointment?', :class => 'btn btn-inverse btn-small' %>
-          </td>        
-        </tr>
+            </div>        
+        </div>
       <% end %>
-      <tbody>     
-    </table>
+      </div>
+
+      
+      </div>     
+    </div>
   </div> 

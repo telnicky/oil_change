@@ -3,10 +3,14 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import 'colorkey.scss';
 
-
+/********************* GENERAL INFO *********************************************/
+a {
+  margin: 5px;
+}
+th {
+  font-weight: normal;
+}
 .content-wrapper {
-  padding: 10px;
-  border: 1px $lightgray dashed;
 }
 
 .form-links {
@@ -14,7 +18,7 @@
     font-size: 13px;
   }
 }
-
+/********************* OWNER INFO *********************************************/
 .remember-me {
   label {
     display: inline-block;
@@ -24,28 +28,155 @@
 
 .welcome-user {
   border-bottom: 2px $lightgray inset;
+  padding: 5px;
 }
 
+/********************* VEHICLE INFO *********************************************/
 .vehicle-list {
-  background: white;
-  border: 1px $lightgray dashed;
   margin: 10px;
-  padding: 5px;
   display: inline-block;
+  border-radius: 5px;
+  font-size: 16px;
+  background: #e0f3fa; /* Old browsers */ 
+  img {
+    padding: 10px 1px 0px 30px;
+    width: 25px;
+  }
+  img:hover {
+  }
+}
+
+.vehicle-info {
+  padding: 10px;
+  border-bottom: 1px rgba(255,255,255, .2) solid;
+  span {
+    font-weight: bold;
+    padding-right: 3px;
+  }
+  .v-info {
+    padding: 5px 0px;
+    border-top: 1px rgba(0,0,0, .27) solid;
+    border-bottom: 1px rgba(0,0,0, .27) solid;
+  }
+  .v-id {
+    padding: 5px 0px;
+    border-bottom: 1px rgba(0,0,0, .27) solid;
+  }
+  .v-oil {
+    padding: 10px 0px 0px 0px;
+  }
+}
+.vehicle-note {
+  line-height: 14px;
+  padding: 0px 10px;
+  margin-bottom: -5px;
+  line-height: 30px;
+  font-weight: bolder;  
+  border-top: 1px rgba(0,0,0, .2) solid;
+  border-bottom: 1px rgba(255,255,255, .2) solid;
+}
+.vehicle-admin {
+  padding: 10px;
+  background-color: #b6dffd;
+  border-top: 1px rgba(0,0,0, .2) solid;
+  a {
+    margin: 2px;
+  }
+
 }
 .note {
-  background-color: whitesmoke;
+  padding: 5px;
+  font-size: 14px;
+  background-color: white;
   height: 100px;
   overflow: scroll;
 }
-.even, th {
-  background-color: white;
+/********************* APPOINTMENT INFO *********************************************/
+.table {
+  width: 620px;
+}
+.td {
+  display: inline-block;
+  text-align: center;
+}
+.thead {
+  background: rgb(140,197,255); /* Old browsers */
+  background: -moz-linear-gradient(top,  rgba(140,197,255,1) 0%, rgba(96,171,248,1) 44%, rgba(51,128,191,1) 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(140,197,255,1)), color-stop(44%,rgba(96,171,248,1)), color-stop(100%,rgba(51,128,191,1))); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  rgba(140,197,255,1) 0%,rgba(96,171,248,1) 44%,rgba(51,128,191,1) 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  rgba(140,197,255,1) 0%,rgba(96,171,248,1) 44%,rgba(51,128,191,1) 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  rgba(140,197,255,1) 0%,rgba(96,171,248,1) 44%,rgba(51,128,191,1) 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  rgba(140,197,255,1) 0%,rgba(96,171,248,1) 44%,rgba(51,128,191,1) 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8cc5ff', endColorstr='#3380bf',GradientType=0 ); /* IE6-9 */
+
+  box-shadow: 0px 2px 4px -4px gray;
+  border: 1px #ADADAD solid;
+  text-shadow: 0px 1px 1px #9DDBFD;
+  z-index: 1;
+
+  font-size: 15px;
+  line-height: 38px;
+
+  .th {
+    display: inline-block;
+    text-align: center;
+    padding: 0px 7px;
+    margin: 0px -2px;
+    border-top: 1px rgba(255, 255, 255, 0.71) solid;
+    border-right: 1px rgba(0,0,0, .08) solid;
+    border-left: 1px rgba(255,255,255, .21) solid;
+  }
+  .th:first-child {
+    border-left: none;
+  }
+  .th:last-child {
+    border-right: none;
+    width: 145px;
+  }
+}  
+.tbody {
+  
+  .even {
+  background-color: whitesmoke;
+  }
+  .odd {
+    background-color: #FFFDFD;
+  }
+  .tr {
+    border-bottom: 1px #CACACA dashed;
+    height: 55px;
+  }
+  .td {
+    height: 100%;
+    display: inline-block;
+    vertical-align: top;
+    padding: 0px 7px;
+    border-left: 1px rgba(255, 255, 255, 0.14) solid;
+    border-right: 1px rgba(0, 0, 0, 0.14) solid;
+  }
+  .td:first-child {
+    border-left: none;
+  }
+  .td:last-child {
+    border-right: none;
+  }
+  a {
+    margin-top: 15px;
+  }
 }
 
-.odd {
-  background-color: #D6E3FF;
+.app-status {
+  width: 50px;
 }
-th, td {
-  border: 1px gray solid;
-  padding: 5px;
+.app-date {
+  width: 60px;
 }
+.app-time,  {
+  min-width: 100px;
+}
+.app-time, .app-vehicle, .app-mechanic, .app-options {
+  min-width: 90px;
+}
+
+
+

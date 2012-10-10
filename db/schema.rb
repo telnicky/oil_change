@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120928201026) do
+ActiveRecord::Schema.define(:version => 20121008205034) do
 
   create_table "appointments", :force => true do |t|
     t.datetime "owner_start"
@@ -90,6 +90,15 @@ ActiveRecord::Schema.define(:version => 20120928201026) do
   add_index "owners", ["confirmation_token"], :name => "index_owners_on_confirmation_token", :unique => true
   add_index "owners", ["email"], :name => "index_owners_on_email", :unique => true
   add_index "owners", ["reset_password_token"], :name => "index_owners_on_reset_password_token", :unique => true
+
+  create_table "payments", :force => true do |t|
+    t.string   "stripeToken",    :null => false
+    t.text     "description"
+    t.integer  "appointment_id", :null => false
+    t.integer  "mechanic_id"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
 
   create_table "vehicles", :force => true do |t|
     t.string   "make"
