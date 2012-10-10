@@ -15,6 +15,16 @@ var Appointment = Backbone.Model.extend({
     'mechanic_id': undefined,
     'owner_id': undefined,
     'vehicle_id': undefined
+  },
+
+  getDate: function(date_string) {
+    var date  = new Date(date_string),
+        month = date.getMonth().toString(),
+        day   = date.getDate().toString(),
+        hours = date.getHours().toString(),
+        minutes = date.getMinutes().toString(),
+        formatted = month + '/' + day + ' ' + hours + ':' + minutes;
+    return formatted;
   }
 
 });

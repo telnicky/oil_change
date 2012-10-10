@@ -3,23 +3,37 @@ var AppointmentsView = ListView.extend({
 
   className: 'mechanic-appointments',
 
+  tagName: 'table',
+
   constructor: function AppointmentsView () {
     ListView.apply(this , arguments);
   },
 
-  initialize: function() {
+  build: function () {
+    this.thead = this.make('thead', {}, 
+      '<tr>' +
+        '<th>Begin</th>' +
+        '<th>End</th>' +
+        '<th>Location</th>' +
+        '<th>Vehicle</th>' +
+      '</tr>'
+    );
+
+    this.tbody = this.make('tbody');
+
+  },
+
+  initialize: function () {
+    var that = this;
+      items = this.getItems();
     this.build();
-    this.render();
-  },
+    
+    _.each(items, function(item) {
+      that.tbody.appendChild(item.el);
+    });
 
-  build: function() {
-
-  },
-
-  render: function() {
-    console.log(this.collection);
-    this.$el.append('View!!!!!!!!');
-    return this;
+    this.$el.html(this.tbody);
+    this.el.insertBefore(this.thead, this.tbody);
   }
 
 });

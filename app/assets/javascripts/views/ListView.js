@@ -3,21 +3,28 @@
 // responsible for headers
 var ListView = Backbone.View.extend({
   
-  tagName: 'table',
-
-  constructor: function() {
+  constructor: function ListView() {
     Backbone.View.apply(this, arguments);
   },
 
+  getItems: function() {
+    var that = this,
+      itemView = this.options.itemView,
+      items = [];
+    
+    if(itemView) {
+      this.collection.each(function(listItem){
+        var item = new itemView({model: listItem});
+        items.push(item);
+      });
+    }
+
+    return items;
+  },
+
   initialize: function() {
-    this.collection.each(function(listItem){
-      var item = new ListItemView(model: listItem);
-      this.$el.append(item);
-    });
+    
   }
 
 });
 
-
-// don't need a listItem view just do this with this.options.itemView
-//new ListView({ collection: something, itemView: SomeListItemView})

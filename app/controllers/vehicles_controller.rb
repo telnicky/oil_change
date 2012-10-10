@@ -1,5 +1,5 @@
 class VehiclesController < ApplicationController
-  respond_to :html
+  respond_to :html, :json
 
 
   def new
@@ -20,6 +20,7 @@ class VehiclesController < ApplicationController
 
    def show 
     @vehicle = Vehicle.find(params[:id])
+    respond_with(@vehicle)
    end
 
   def edit 

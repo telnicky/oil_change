@@ -1,7 +1,7 @@
 class Appointment < ActiveRecord::Base
   attr_accessible :street, :city, :zip, :owner_notes
   attr_accessible :owner_start, :owner_end, :mechanic_start, :mechanic_end, :mechanic_notes, :status
-  attr_accessible :mechanic_id, :owner_id, :vehicle_id
+  attr_accessible :mechanic_id, :owner_id, :vehicle_id, :state
 
   
   belongs_to  :vehicle
