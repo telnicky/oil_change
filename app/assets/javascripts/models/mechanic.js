@@ -1,1 +1,3 @@
-mechanic.js
+var mechanic = Backbone.Model.extend({
+  urlRoot: '/mechanics'
+});

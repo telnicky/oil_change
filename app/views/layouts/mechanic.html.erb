@@ -1,23 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-   <!--STRIPE START -->
-  <%= javascript_include_tag 'https://js.stripe.com/v1/'%>
-  <%= javascript_tag 'Stripe.setPublishableKey(\'pk_b4Kw7ff4V6MEu47nfE37wqY8K5kr2\');' %>
-
-  <!--STRIPE END -->
-  <%= javascript_include_tag 'http://maps.googleapis.com/maps/api/js?key=AIzaSyAJXNiTBM1wkZZFwwSM3dB1IyPAqed69_E&sensor=true' %>
-  <%= javascript_include_tag "application" %>
-  <%= javascript_include_tag 'rails' %>
-  <%= csrf_meta_tags %> 
-
-  <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
   <title>Mobile Oil Change</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  
+  <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag :defaults %>
+  <%= javascript_include_tag 'rails' %>
+  <%= javascript_include_tag 'http://maps.googleapis.com/maps/api/js?key=AIzaSyAJXNiTBM1wkZZFwwSM3dB1IyPAqed69_E&sensor=true' %>
+
+  <%= csrf_meta_tags %>
+  
   <%= yield :header %>
-
 </head>
-
 <body>
   <header>
     <div class="header"> 
@@ -25,10 +20,7 @@
         <img src="/assets/car.png" />
         <h3>Mobile Oil Change</h3> 
         <div class="userInfo"> 
-          <% if(owner_signed_in?) %>
-            <%= link_to("#{current_owner.first_name} #{current_owner.last_name}", owner_path(current_owner)) %> |
-            <%= link_to 'Log Out', destroy_owner_session_path, :method => :delete %> <br/> 
-          <% elsif(mechanic_signed_in?) %>
+          <% if(mechanic_signed_in?) %>
             <%= link_to("#{current_mechanic.first_name} #{current_mechanic.last_name}", mechanic_path(current_mechanic)) %> |
             <%= link_to 'Log Out', destroy_mechanic_session_path, :method => :delete %> <br/> 
           <% else %>  
@@ -48,6 +40,8 @@
       <p class="error"><%= flash[:error] %></p>
     <% end %>
   </div>
+
+
 
   <div id="yield">
     <%= yield %>
