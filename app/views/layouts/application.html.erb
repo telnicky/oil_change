@@ -2,15 +2,18 @@
 <html lang="en">
 <head>
   <%= stylesheet_link_tag    "application", :media => "all" %>
+   <!--STRIPE START -->
+  <%= javascript_include_tag 'https://js.stripe.com/v1/'%>
+  <%= javascript_tag 'Stripe.setPublishableKey(\'pk_b4Kw7ff4V6MEu47nfE37wqY8K5kr2\');' %>
+
+  <!--STRIPE END -->
   <%= javascript_include_tag 'http://maps.googleapis.com/maps/api/js?key=AIzaSyAJXNiTBM1wkZZFwwSM3dB1IyPAqed69_E&sensor=true' %>
   <%= javascript_include_tag "application" %>
   <%= javascript_include_tag 'rails' %>
-  <%= csrf_meta_tags %>
+  <%= csrf_meta_tags %> 
+
   <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
-  <style type="text/css">
-    #map_canvas { height: 350px; width: 80%; }
-    .map_canvas { height: 350px; width: 720px; }
-  </style>  
+ 
   <title>Mobile Oil Change</title>
 </head>
 

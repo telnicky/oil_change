@@ -93,7 +93,11 @@ th {
 }
 /********************* APPOINTMENT INFO *********************************************/
 .table {
-
+  width: 620px;
+}
+.td {
+  display: inline-block;
+  text-align: center;
 }
 .thead {
   background: rgb(140,197,255); /* Old browsers */
@@ -127,25 +131,9 @@ th {
   }
   .th:last-child {
     border-right: none;
+    width: 145px;
   }
-  .app-status {
-    width: 50px;
-  }
-  .app-date {
-    width: 60px;
-  }
-  .app-options, .app-time, .app-vehicle, .app-mechanic {
-    min-width: 90px;
-  }
-  .app-time,  {
-    min-width: 100px;
-  }
-}
-.td {
-  display: inline-block;
-  text-align: center;
-}
-
+}  
 .tbody {
   
   .even {
@@ -156,6 +144,39 @@ th {
   }
   .tr {
     border-bottom: 1px #CACACA dashed;
+    height: 55px;
+  }
+  .td {
+    height: 100%;
+    display: inline-block;
+    vertical-align: top;
+    padding: 0px 7px;
+    border-left: 1px rgba(255, 255, 255, 0.14) solid;
+    border-right: 1px rgba(0, 0, 0, 0.14) solid;
+  }
+  .td:first-child {
+    border-left: none;
+  }
+  .td:last-child {
+    border-right: none;
+  }
+  a {
+    margin-top: 15px;
   }
 }
+
+.app-status {
+  width: 50px;
+}
+.app-date {
+  width: 60px;
+}
+.app-time,  {
+  min-width: 100px;
+}
+.app-time, .app-vehicle, .app-mechanic, .app-options {
+  min-width: 90px;
+}
+
+
 

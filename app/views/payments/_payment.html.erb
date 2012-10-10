@@ -1,0 +1,47 @@
+    <!-- to display errors returned by createToken -->
+<span class="payment-errors"></span>
+
+<%= form_for (@payment) do |p| %>
+  <fieldset>
+  <%= p.hidden_field :appointment_id, :value => params[:appointment_id] %>
+    <div class="payemnt-errors"> </div>
+    <h3>Billing Address</h3>
+    <div class="form-row">
+    </div>
+    <h3>Credit Card Info</h3>
+    <div class="form-row">
+      <%= p.label :regular, "Regular Oil - $40", :class=>"ib" %>
+        <%= p.radio_button :description, '40', :checked => true  %> </br>
+      <%= p.label :synthetic, "Synthetic Oil - $80", :class=>"ib" %>
+        <%= p.radio_button :description, '80' %>
+    </div>
+
+     <div class="form-row">
+        <%= label_tag 'Name on Card' %>
+        <%= text_field_tag "", "", :size => "20", :class=> "field card-name", :value => "#{@owner.first_name.capitalize} #{@owner.last_name.capitalize}" %>
+    </div>
+
+    <div class="form-row">
+        <%= label_tag 'Card Number' %>
+        <%= text_field_tag "", params[:credit_card_number], :size=>"20", :class=>"field card-number", :value => '4242424242424242' %>
+    </div>
+    
+    <div class="form-row">
+        <div class="ib">
+        <%= label_tag 'CVV' %>
+          <%= text_field_tag "", "", {:size =>"4", :class => "field-small card-cvc", :value => '123'} %> 
+        </div>
+        <div class="ib">
+        <%= label_tag 'Expiration (MM/YYYY)' %>
+          <%= date_select "", "", {:discard_day => true, :order => [:month, :year], :use_month_numbers => true, :start_year => Date.today.year, :end_year => Date.today.year + 15}, {:class => "field-medium card-exp"} %>
+        </div>
+    </div>
+    <div class="form-row">
+        <%= label_tag 'Card Type' %>
+        <%= select_tag("", options_for_select([['Visa', 'visa'],['MasterCard', 'mastercard'],['Discover', 'discover'],['American Express', 'americanexpress']]), :class => "card-type" )%>          
+    </div>
+    
+    <%= submit_tag "Submit", :action => "create", :class => "btn primary submit-button" %>
+
+  </fieldset>
+<% end %>

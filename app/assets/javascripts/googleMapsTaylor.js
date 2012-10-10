@@ -66,29 +66,22 @@
                 
               //render the map.
               map.setCenter(new google.maps.LatLng(newX, newY));
-             
-              //add new point & window to map or update existing point         
-               console.log(appMarker + " before")         
-              if ( check !== "1") {
-                 console.log(appMarker + 'if')
-                //add point to map.
+              //add new point & popup-window to map or update existing point         
+              if ( appMaker == false) {
+                //add point to map
                 var appMarker = new google.maps.Marker({
                   position: results[0].geometry.location,
                   map: map,
                   zoom: 4,
                   title: 'Your appointment location!',
                 });
-                console.log(check)
-                var check = "1";
-                console.log(check)
                 //update window
                 var windowBox = new google.maps.InfoWindow({
                       map: map,
                       position: results[0].geometry.location,
                       content: 'Your vehicle\'s location'
                     });
-              } else if ( check == "1") { 
-               console.log(appMarker + 'else')
+              } else { 
                 //Just Update the Marker position
                 appMarker.setPosition( results[0].geometry.location );
                  //update window

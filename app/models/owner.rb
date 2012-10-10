@@ -14,7 +14,8 @@ class Owner < ActiveRecord::Base
 
   has_many :vehicles, :dependent => :destroy
   has_many :appointments, :through => :vehicles, :dependent => :destroy
-  
+
+
   validates :email, :presence => true, :uniqueness => true
 
 
