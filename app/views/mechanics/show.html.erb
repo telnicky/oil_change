@@ -1,12 +1,11 @@
 <% content_for :header do %>
-<%= javascript_include_tag 'mechanicShow.js'%>
+  <%= javascript_include_tag 'require', 'data-main' => '/assets/mainMechanic'%>
 <% end %>
 
-
-<script type="text/javascript">
-  var appointments = new Appointments;
-  appointments.reset(<%= json_escape(@appointments.to_json).html_safe %>);
-</script> 
+<!-- make into helper so we can add more than one object to json data -->
+<% content_for :json_data do %>
+  <%= json_escape(@appointments.to_json).html_safe %>
+<% end %>
 
 <div class='container'>
   <div class='row welcome-mechanic'>
