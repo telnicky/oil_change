@@ -33,7 +33,7 @@ private
       :description => @appointment.id,
       :email => "test@stripetest.com"
     )
-binding.pry
+
     if params[:payment][:description] == 40
       Stripe::Charge.create(
           :customer => customer,
