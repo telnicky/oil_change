@@ -3,11 +3,12 @@
     <div class="span3">
       <h1>Welcome</h1>
       Name:     <%= @owner.first_name %> <%= @owner.last_name %>    <br/>
-      Email:  <%= @owner.email %> <br/>
-      Phone:   <%= @owner.phone_number %>  <br/>
+      Email:    <%= @owner.email %> <br/>
+      Phone:    <%= @owner.phone_number %>  <br/>
       
       <%= link_to "Add a Vehicle", new_vehicle_path(:owner_id => @owner.id), :class => 'btn btn-success btn-small btn-block' %>
       <%= link_to "Edit User Info", edit_owner_path, :class => 'btn btn-primary btn-small' %>
+      <%= link_to "Manage Payments", payments_show_path(:owner_id => @owner.id), :class => 'btn btn-primary btn-small' %>
     </div>
   <div class="span8 show-appointments">
        <%= render 'show_appointments' %>

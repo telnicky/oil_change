@@ -1,0 +1,10 @@
+<h1>Primary Card Info</h1>
+
+<div class="row">
+  <div class="span8">
+    Name on Card: <%= @customer.active_card.name %> </br>
+    Card #: **** **** **** <%= @customer.active_card.last4 %></br>
+    Type: <%= @customer.active_card.type %></br>
+    Expiration: <%= @customer.active_card.exp_month %>/<%= @customer.active_card.exp_year %></br>
+  </div>
+</div>  
