@@ -1,7 +1,7 @@
 define(['views/ListView','views/AppointmentItemView'], function(ListView, AppointmentItemView) {
   var AppointmentsView = ListView.extend({
 
-    className: 'mechanic-appointments',
+    className: 'mechanic-appointments table',
 
     tagName: 'table',
 
