@@ -14,6 +14,9 @@
   <%= csrf_meta_tags %> 
   
   <title>Mobile Oil Change</title>
+
+  <script> var require = {baseUrl: '/assets/'}; </script>
+
   <%= yield :header %>
   <script> window.jsonData = <%= yield :json_data || 0 %>; </script>
 </head>
