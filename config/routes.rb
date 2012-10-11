@@ -6,6 +6,7 @@ OilChange::Application.routes.draw do
 
   get "home/index"
   get "payments/index"
+  get "payments/show"
   get "mechanics/add_job"
   get "mechanics/remove_job"
   get "mechanics/complete_job"

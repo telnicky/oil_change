@@ -135,7 +135,8 @@ th {
   }
 }  
 .tbody {
-  
+  max-height: 190px;
+  overflow: scroll;
   .even {
   background-color: whitesmoke;
   }

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121008205034) do
+ActiveRecord::Schema.define(:version => 20121011173030) do
 
   create_table "appointments", :force => true do |t|
     t.datetime "owner_start"
@@ -85,6 +85,7 @@ ActiveRecord::Schema.define(:version => 20121008205034) do
     t.string   "unconfirmed_email"
     t.string   "provider"
     t.string   "uid"
+    t.string   "stripe_customer_id"
   end
 
   add_index "owners", ["confirmation_token"], :name => "index_owners_on_confirmation_token", :unique => true

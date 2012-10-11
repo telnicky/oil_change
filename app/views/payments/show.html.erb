@@ -1,0 +1,22 @@
+<div class="content-wrapper">
+  <div class="row welcome-user">  
+    <div class="span3 ">
+      <h1>Manage Payments</h1>
+      Name:     <%= @owner.first_name %> <%= @owner.last_name %>    <br/>
+      Email:    <%= @owner.email %> <br/>
+      Phone:    <%= @owner.phone_number %>  <br/>
+      
+      <%= link_to "Add Primary Credit Card", new_vehicle_path(:owner_id => @owner.id), :class => 'btn btn-success btn-small btn-block' %>
+      <%= link_to "Edit Primary Credit Card", new_vehicle_path(:owner_id => @owner.id), :class => 'btn btn-success btn-small btn-block' %>
+      <%= link_to "Delete Primary Credit Card", new_vehicle_path(:owner_id => @owner.id), :class => 'btn btn-success btn-small btn-block' %>
+    </div>
+  <div class="span8 show-appointments">
+      <%= render 'payment_history' %>
+    </div>  
+  </div>
+  <div class="row">
+   <%= render 'primary_card' %>
+   <div class="adspace">
+   </div>
+  </div> 
+</div>  

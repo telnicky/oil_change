@@ -1,0 +1,43 @@
+<h1>Payment History</h1>
+ <div class="appointments-list">
+    <div class="table"> 
+      
+      <div class="thead">
+        <div class="tr">
+          <div class="th app-status">Paid  </div>
+          <div class="th app-date">Created      </div>
+          <div class="th app-time">Amount </div>
+          <div class="th app-vehicle">Card #    </div>
+          <div class="th app-mechanic">Type  </div>
+          <div class="th app-options">Vehicle    </div>
+        </div>
+      </div>  
+      
+      <div class="tbody">
+      <% @history.data.each do |f| %>
+        <div class="tr <%= cycle('even', 'odd')%>">
+          <div class="td app-status">
+              <%= f.paid %> 
+            </div>          
+          <div class="td app-date">
+             <%= f.created %>
+            </div>
+          <div class="td app-time">
+              <%= f.amount %>
+            </div>
+          <div class="td app-vehicle">
+              <%= f.card.last4 %>             
+            </div>
+          <div class="td app-mechanic">  
+              <%= f.card.type %>    
+            </div>
+          <div class="td app-options">  
+              Vehicle: 
+            </div>        
+        </div>
+      <% end %>
+      </div>
+      
+      </div>     
+    </div>
+  </div> 
