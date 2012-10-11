@@ -1,8 +1,7 @@
 define(['views/ListView','views/AppointmentItemView'], function(ListView, AppointmentItemView) {
   var AppointmentsView = ListView.extend({
 
-    className: 'mechanic-appointments table',
-
+    className: 'mechanic-appointments table table-striped table-hover',
     tagName: 'table',
 
     constructor: function AppointmentsView () {
