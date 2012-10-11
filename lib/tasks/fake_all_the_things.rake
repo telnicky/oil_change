@@ -47,6 +47,7 @@ namespace :fake  do
                        :owner_id => owner.id,
                        :street => Faker::Address.street_name,
                        :city => Faker::Address.city,
+                       :state => 'UT',
                        :zip => Faker::Address.zip )
 
     # create fake info
@@ -92,6 +93,7 @@ namespace :fake  do
                          :owner_id => owner.id,
                          :street => Faker::Address.street_name,
                          :city => Faker::Address.city,
+                         :state => 'UT',
                          :zip => Faker::Address.zip )
  
     end

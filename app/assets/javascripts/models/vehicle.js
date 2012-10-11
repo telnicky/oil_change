@@ -1,3 +1,3 @@
-var vehicle = Backbone.Model.extend({
+var Vehicle = Backbone.Model.extend({
   urlRoot: '/vehicles'
 });
