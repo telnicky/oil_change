@@ -1,21 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag 'http://maps.googleapis.com/maps/api/js?key=AIzaSyAJXNiTBM1wkZZFwwSM3dB1IyPAqed69_E&sensor=true' %>
+  <%= stylesheet_link_tag 'application' %>
   <%= javascript_include_tag "application" %>
-  <%= javascript_include_tag 'rails' %>
-  <!--STRIPE START -->
+   <!--STRIPE START -->
   <%= javascript_include_tag 'https://js.stripe.com/v1/'%>
-  <%= javascript_include_tag "stripe.js" %>
   <%= javascript_tag 'Stripe.setPublishableKey(\'pk_b4Kw7ff4V6MEu47nfE37wqY8K5kr2\');' %>
   <!--STRIPE END -->
-  <%= csrf_meta_tags %> 
+  <!-- GOOGLE MAPS START -->  
+  <%#= javascript_include_tag 'rails' %>
+  <%= javascript_include_tag 'http://maps.googleapis.com/maps/api/js?key=AIzaSyAJXNiTBM1wkZZFwwSM3dB1IyPAqed69_E&sensor=true' %>
+  <!-- GOOGLE MAPS END -->
 
   <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+  <%= csrf_meta_tags %> 
+  
   <title>Mobile Oil Change</title>
   <%= yield :header %>
-
+  <script> window.jsonData = <%= yield :json_data || 0 %>; </script>
 </head>
 
 <body>
@@ -23,7 +25,7 @@
     <div class="header"> 
       <div class="headerBody">
         <img src="/assets/car.png" />
-        <h3>Mobile Oil Change</h3> 
+        <h3>Oil Mob</h3> 
         <div class="userInfo"> 
           <% if(owner_signed_in?) %>
             <%= link_to("#{current_owner.first_name} #{current_owner.last_name}", owner_path(current_owner)) %> |

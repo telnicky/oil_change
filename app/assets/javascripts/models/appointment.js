@@ -1,31 +1,35 @@
-var Appointment = Backbone.Model.extend({
-  urlRoot: '/appointments',
+define([], function() {
 
-  defaults: {
-    'street': '',
-    'city': '',
-    'zip': '',
-    'owner_notes': '',
-    'owner_start': '',
-    'owner_end': '',
-    'mechanic_start': undefined,
-    'mechanic_end': undefined,
-    'mechanic_notes': '',
-    'status': undefined,
-    'mechanic_id': undefined,
-    'owner_id': undefined,
-    'vehicle_id': undefined
-  },
+  var Appointment = Backbone.Model.extend({
+    urlRoot: '/appointments',
 
-  getDate: function(date_string) {
-    var date  = new Date(date_string),
-        month = date.getMonth().toString(),
-        day   = date.getDate().toString(),
-        hours = date.getHours().toString(),
-        minutes = date.getMinutes().toString(),
-        formatted = month + '/' + day + ' ' + hours + ':' + minutes;
-    return formatted;
-  }
+    defaults: {
+      'street': '',
+      'city': '',
+      'zip': '',
+      'owner_notes': '',
+      'owner_start': '',
+      'owner_end': '',
+      'mechanic_start': undefined,
+      'mechanic_end': undefined,
+      'mechanic_notes': '',
+      'status': undefined,
+      'mechanic_id': undefined,
+      'owner_id': undefined,
+      'vehicle_id': undefined
+    },
 
+    getDate: function(date_string) {
+      var date  = new Date(date_string),
+          month = date.getMonth().toString(),
+          day   = date.getDate().toString(),
+          hours = date.getHours().toString(),
+          minutes = date.getMinutes().toString(),
+          formatted = month + '/' + day + ' ' + hours + ':' + minutes;
+      return formatted;
+    }
+
+  });
+  
+  return Appointment;
 });
-

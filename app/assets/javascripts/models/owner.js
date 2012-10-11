@@ -1,3 +1,8 @@
-var owner = Backbone.Model.extend({
-  urlRoot: '/owners'
+define([], function() {
+
+  var Owner = Backbone.Model.extend({
+    urlRoot: '/owners'
+  });
+
+  return Owner;
 });
