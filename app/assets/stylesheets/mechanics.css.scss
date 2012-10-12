@@ -13,3 +13,9 @@
 .extra-padding {
   padding-left: 160px;
 }
+
+.appointment-item-view {
+  &:hover {
+    cursor: pointer;
+  }
+}

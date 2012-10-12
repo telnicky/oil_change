@@ -4,6 +4,10 @@ define(['models/Vehicle'], function(Vehicle) {
     tagName: 'tr',
     className: 'appointment-item-view',
 
+    events: {
+      'click': 'onItemClick'
+    },
+
     template: _.template(
       '<td><%= ownerStart %></td>' +
       '<td><%= ownerEnd %></td>' +
@@ -46,7 +50,10 @@ define(['models/Vehicle'], function(Vehicle) {
       return make + ' ' + model;
     },
 
-
+    onItemClick: function(event){
+      console.log('Item CLIIIIICKED Render details here');
+      console.log(event);
+    },
 
     render: function() {
       this.$el.html(

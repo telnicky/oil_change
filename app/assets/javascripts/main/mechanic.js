@@ -2,8 +2,9 @@ $(function () {
   require(
     ['views/AppointmentsView', 'views/AppointmentItemView', 'collections/Appointments'],
     function (AppointmentsView , AppointmentItemView , Appointments) {
+      
       // instantiate collection
-      var appointments = new Appointments(window.jsonData);
+      var appointments = new Appointments(window.jsonData.available_appointments);
       
       // instantiate View
       var appointmentsView = new AppointmentsView({
