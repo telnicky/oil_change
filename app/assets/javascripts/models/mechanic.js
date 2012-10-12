@@ -1,3 +1,8 @@
-var mechanic = Backbone.Model.extend({
-  urlRoot: '/mechanics'
+define([], function() {
+
+  var Mechanic = Backbone.Model.extend({
+    urlRoot: '/mechanics'
+  });
+
+  return Mechanic;
 });

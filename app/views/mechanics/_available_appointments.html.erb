@@ -44,7 +44,12 @@
                 License Plate: <%= Vehicle.find(a.vehicle_id).license_plate unless a.vehicle_id.nil? %>           </br>
                 Color:         <%= Vehicle.find(a.vehicle_id).color unless a.vehicle_id.nil? %>                   </td>
               <td><%= link_to "Inspect", :class => "btn btn-primary btn-small"  %>
-                  <%= link_to "Add Job", :action => "add_job", :appointment_id => a.id, :id => @mechanic.id, :class => "btn btn-success btn-small"  %>
+                  <%#= link_to "Add Job", :action => "add_job", :appointment_id => a.id, :id => @mechanic.id, :class => "btn btn-success btn-small"  %>
+                  <%= form_for a do |appointment| %>
+                    <%= appointment.hidden_field(:mechanic_id, :value => @mechanic.id)%>
+                    <%= appointment.hidden_field(:status, :value => 2)%>
+                    <%= appointment.submit(:value => 'Add Job')%>
+                  <% end %>
                    </td>    
             </tr>  
         <% end %>

@@ -19,7 +19,6 @@ class Appointment < ActiveRecord::Base
   validates :street, :presence => true
   validates :city, :presence => true
   validates :zip, :presence => true
-
   validate :owner_start_in_future
 
   STATUS = { 1 => "Open", 2 => "Reserved", 3 => "Job Complete"}.freeze

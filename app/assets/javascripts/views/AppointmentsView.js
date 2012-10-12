@@ -1,7 +1,7 @@
 define(['views/ListView','views/AppointmentItemView'], function(ListView, AppointmentItemView) {
   var AppointmentsView = ListView.extend({
 
-    className: 'mechanic-appointments table table-striped table-hover',
+    className: 'appointments table table-striped table-hover',
     tagName: 'table',
 
     constructor: function AppointmentsView () {
@@ -23,9 +23,15 @@ define(['views/ListView','views/AppointmentItemView'], function(ListView, Appoin
     },
 
     initialize: function () {
-      var that = this;
-        items = this.getItems();
+      _.bindAll(this, 'render');
+      this.collection.bind('removeAppointment', this.render);
       this.build();
+      this.render();
+    },
+
+    render: function () {
+      var that = this,
+        items = this.getItems();
       
       _.each(items, function(item) {
         that.tbody.appendChild(item.el);

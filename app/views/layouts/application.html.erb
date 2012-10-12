@@ -17,7 +17,10 @@
   
   <title>Mobile Oil Change</title>
 
-  <script> var require = {baseUrl: '/assets/'}; </script>
+  <script> 
+    var require = {baseUrl: '/assets/'}; 
+
+  </script>
 
   <%= yield :header %>
   <script> window.jsonData = <%= yield :json_data || 0 %>; </script>

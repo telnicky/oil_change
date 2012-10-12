@@ -1,5 +1,5 @@
 
-define(['models/Vehicle'], function(Vehicle) {
+define(['models/Vehicle'], function (Vehicle) {
   var AppointmentItemView = Backbone.View.extend({
     tagName: 'tr',
     className: 'appointment-item-view',
@@ -19,22 +19,22 @@ define(['models/Vehicle'], function(Vehicle) {
       Backbone.View.apply(this , arguments);
     },
 
-    initialize: function() {
+    initialize: function () {
       var that = this;
       this.vehicle = new Vehicle({id: this.model.get('vehicle_id')});
       this.vehicle.fetch({
-        success: function(model, response) {
+        success: function (model, response) {
           console.log('Fetch Succeeeeeeeeeded');
           that.render();
         },
 
-        error: function(model, response) {
+        error: function (model, response) {
           console.log('Failed to Fetch');
         }
       })
     },
 
-    getLocation: function() {
+    getLocation: function () {
       var street = this.model.get('street'),
         city  = this.model.get('city'),
         zip   = this.model.get('zip'),
@@ -43,19 +43,19 @@ define(['models/Vehicle'], function(Vehicle) {
       return street + ' ' + city + ', ' + state + ' ' + zip;
     },
 
-    getVehicle: function() {
+    getVehicle: function () {
       var make = this.vehicle.get('make'),
         model = this.vehicle.get('model')
 
       return make + ' ' + model;
     },
 
-    onItemClick: function(event){
+    onItemClick: function (event){
       console.log('Item CLIIIIICKED Render details here');
       console.log(event);
     },
 
-    render: function() {
+    render: function () {
       this.$el.html(
         this.template({
           ownerStart: this.model.getDate(this.model.get('owner_start')),

@@ -1,18 +1,22 @@
 $(function () {
   require(
-    ['views/AppointmentsView', 'views/AppointmentItemView', 'collections/Appointments'],
-    function (AppointmentsView , AppointmentItemView , Appointments) {
+    ['collections/Appointments', 'models/Mechanic','views/MechanicAppointmentsView', 'views/AvailableAppointmentItemView'],
+    function ( Appointments, Mechanic, MechanicAppointmentsView, AvailableAppointmentItemView ) {
       
-      // instantiate collection
-      var appointments = new Appointments(window.jsonData.available_appointments);
-      
+      // instantiate data
+      var availableAppointments = new Appointments(window.jsonData.available_appointments),
+        mechanic = new Mechanic(window.jsonData.mechanic);
+        
+
+
       // instantiate View
-      var appointmentsView = new AppointmentsView({
-        collection: appointments, 
-        itemView: AppointmentItemView
+      var availableAppointmentsView = new MechanicAppointmentsView({
+        collection: availableAppointments,
+        mechanic: mechanic,
+        itemView: AvailableAppointmentItemView
       });
 
       // insert into page
-      $('.mechanic-appointments-container').append(appointmentsView.el);
+      $('.mechanic-appointments-container').append(availableAppointmentsView.el);
   })
 });

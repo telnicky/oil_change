@@ -86,7 +86,7 @@ namespace :fake  do
       start_time = rand(0..31).days.from_now.utc
       Appointment.create(:owner_notes => Faker::Lorem.paragraph(),
                          :mechanic_notes => Faker::Lorem.paragraph(),
-                         :status => rand(1..3),
+                         :status => 1,#rand(1..3),
                          :owner_start => start_time,
                          :owner_end => start_time.end_of_day,
                          :vehicle_id => veh.id,

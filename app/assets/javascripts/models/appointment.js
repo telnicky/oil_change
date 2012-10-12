@@ -19,7 +19,11 @@ define([], function() {
       'vehicle_id': undefined
     },
 
-    getDate: function(date_string) {
+    initialize: function () {
+      this.bind('change', this.onChange);
+    },
+
+    getDate: function (date_string) {
       var date  = new Date(date_string),
           month = date.getMonth().toString(),
           day   = date.getDate().toString(),
@@ -27,6 +31,10 @@ define([], function() {
           minutes = date.getMinutes().toString(),
           formatted = month + '/' + day + ' ' + hours + ':' + minutes;
       return formatted;
+    },
+
+    onChange: function (model, options) {
+      this.trigger('removeAppointment', model, options);
     }
 
   });
