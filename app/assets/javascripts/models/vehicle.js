@@ -1,7 +1,7 @@
 define([], function() {
 
   var Vehicle = Backbone.Model.extend({
-    urlRoot: '/vehicles'
+    urlRoot: '/vehicles',
 
     defaults: {
       'make': '',
@@ -14,9 +14,6 @@ define([], function() {
       'notes': '',
       'owner_id': undefined
     },
-
-    
-
   });
   
   return Vehicle;

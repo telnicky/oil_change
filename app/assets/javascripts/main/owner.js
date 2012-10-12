@@ -1,11 +1,20 @@
 $(function () {
-  require(['views/OwnersView', //owner info
-            '', //appointments
-            '', //cc & payment info
-            '', //vehicles
+  require(['views/OwnersInfoView', //owner info
+            'models/Owner'
+            // '', //appointments
+            // '', //cc & payment info
+            // '', //vehicles
           ],
-    function (OwnersView , , ) {
+    function (OwnersInfoView, owner) {
+                                                   // ??owner_id???????   
+      var ownersInfo = new Owners(window.jsonData.id)
 
-      $('.owners-wrapper').append(ownersView.el);
+      var ownersInfoView = new OwnersInfoView({
+        //collection: 
+
+      });
+
+
+      $('.owners-info-area').append(ownersInfoView.el);
     })
 });

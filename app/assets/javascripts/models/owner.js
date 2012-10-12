@@ -1,8 +1,15 @@
-define([], function() {
+define([], function() { 
 
   var Owner = Backbone.Model.extend({
-    urlRoot: '/owners'
+    urlRoot: '/owners',
+
+    defaults: {
+      'first_name': '',
+      'last_name': '',
+      'phone_number': '',
+      'email': ''
+    },
   });
 
-  return Owner;
+  return Vehicle;
 });
