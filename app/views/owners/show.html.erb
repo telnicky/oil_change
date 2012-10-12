@@ -1,8 +1,10 @@
 <% content_for :header do %>
-  <%= javascript_include_tag 'require', 'data-main' => '/assets/main/mechanic'%>
+  <%= javascript_include_tag 'require', 'data-main' => '/assets/main/owner'%>
+  <%= javascript_include_tag 'require', 'data-main' => '/assets/main/vehicles'%>
 <% end %>
 <% content_for :json_data do %>
   <%= json_escape(@owner.to_json).html_safe %>
+  <%= json_escape(@vehicle.to_json).html_safe %>
 <% end %>
 
 <div class="content-wrapper">
@@ -18,10 +20,12 @@
       <%= link_to "Manage Payments", payments_show_path(:owner_id => @owner.id), :class => 'btn btn-primary btn-small' %>
     </div>
   <div class="span8 show-appointments">
+       ___
        <%= render 'show_appointments' %>
     </div>  
   </div>
   <div class="row">
+    <div class="show-owners-vehicles"></div>
    <%= render 'show_vehicles' %>
    <div class="adspace">
    </div>
