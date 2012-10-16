@@ -1,4 +1,4 @@
-define(['models/Owner'], function(Owner){
+define(['models/OwnerModel'], function(OwnerModel){
   var OwnersInfoView = Backbone.View.extend({
     tagName: 'div',
     className: 'owners-info-view',
@@ -10,9 +10,10 @@ define(['models/Owner'], function(Owner){
     },
 
     template: _.template(
+      '<h1>Welcome</h1>' +
       '<div>Name:' + '<%= name %>' + '<br/>' +
-      'Phone:' + '<%= phone %>' + '<br/>' +
-      'Email:' + '<%= email %>' + '</div>'
+      'Email:' + '<%= email %>' + '</div>' +
+      'Phone:' + '<%= phone %>' + '<br/>'
     ),
     
     //for debugging purposes
@@ -21,32 +22,23 @@ define(['models/Owner'], function(Owner){
     },
 
     initialize: function() {
-      var that = this;
-      this.owner = new Owner({id: Owner.id);
-       this.owner.fetch({
-         success: function(model, response){
-           console.log('Owner View Success')
-         },
-         error: function(model, response){
-           console.log('Owner View Failed')
-         }
-       })
+      this.render();
     },
 
     getName: function() {
       var first = this.model.get('first_name'),
           last = this.model.get('last_name');
-      return first.charAt(0).toUpperCase + ' ' + last.charAt(0).toUpperCase;
+      return ' ' + first + ' ' + last;
     },
 
     getEmail: function() {
       var email = this.model.get('email');
-      return email;
+      return ' ' + email;
     },
 
     getPhone: function() {
-      var phone = this.model.get('phone');
-      return phone;
+      var phone = this.model.get('phone_number');
+      return ' ' + phone;
     },
 
     render: function () {
@@ -54,7 +46,7 @@ define(['models/Owner'], function(Owner){
         this.template({
           name: this.getName(),
           email: this.getEmail(),
-          phone: this.getphone()
+          phone: this.getPhone()
         })
       );
     }

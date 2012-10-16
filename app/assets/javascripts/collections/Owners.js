@@ -1,8 +1,8 @@
-define(['models/Owner'], function(Appointment) {
+define(['models/OwnerModel'], function(Owner) {
     
     var Owners = Backbone.Collection.extend({
       model: Owners,
-      url: '/appointments'
+      url: '/owners'
     });
 
     return Owners;

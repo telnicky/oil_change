@@ -7,7 +7,7 @@ define([], function() {
 
     getItems: function() {
       var that = this,
-        itemView = this.options.itemView,
+        itemView = this.options.itemview,
         items = [];
       
       if(itemView) {
@@ -16,7 +16,9 @@ define([], function() {
           items.push(item);
         });
       }
-
+      else {
+        console.log('itemView failed');
+      }
       return items;
     },
 

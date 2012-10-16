@@ -92,6 +92,13 @@ th {
   overflow: scroll;
 }
 /********************* APPOINTMENT INFO *********************************************/
+table {
+  width: 100%;
+  th {
+    padding: 0px 10px;
+    border-bottom: 2px gray solid
+  }
+}
 .table {
   width: 620px;
 }
@@ -148,7 +155,6 @@ th {
     height: 55px;
   }
   .td {
-    height: 100%;
     display: inline-block;
     vertical-align: top;
     padding: 0px 7px;
