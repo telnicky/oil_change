@@ -1,16 +1,17 @@
 $(function () {
   require(['views/OwnersInfoView', //owner info
-            'models/Owner'
+            'models/Owner',
+            'collections/Owners'
             // '', //appointments
             // '', //cc & payment info
             // '', //vehicles
           ],
-    function (OwnersInfoView, owner) {
+    function (OwnersInfoView, Owner, Owners) {
                                                    // ??owner_id???????   
-      var ownersInfo = new Owners(window.jsonData.id)
+      var ownersInfo = new Owner(window.jsonData.id)
 
       var ownersInfoView = new OwnersInfoView({
-        //collection: 
+        collection: Owners
 
       });
 

@@ -27,7 +27,6 @@ define(['models/Vehicle'], function(Vehicle) {
           console.log('Fetch Succeeeeeeeeeded');
           that.render();
         },
-
         error: function(model, response) {
           console.log('Failed to Fetch');
         }

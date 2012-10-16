@@ -1,5 +1,5 @@
-define(['model/Owner'], function(Owner){
-  var OwnersInfoView = Backbone.view.extend({
+define(['models/Owner'], function(Owner){
+  var OwnersInfoView = Backbone.View.extend({
     tagName: 'div',
     className: 'owners-info-view',
 
@@ -22,7 +22,7 @@ define(['model/Owner'], function(Owner){
 
     initialize: function() {
       var that = this;
-      this.owner = new Owner({id: this.model.get('id')});
+      this.owner = new Owner({id: Owner.id);
        this.owner.fetch({
          success: function(model, response){
            console.log('Owner View Success')
@@ -31,22 +31,21 @@ define(['model/Owner'], function(Owner){
            console.log('Owner View Failed')
          }
        })
-    };
+    },
 
     getName: function() {
-      var first = this.model.get({'first_name'}),
-          last = this.model.get({'last_name'});
-
+      var first = this.model.get('first_name'),
+          last = this.model.get('last_name');
       return first.charAt(0).toUpperCase + ' ' + last.charAt(0).toUpperCase;
     },
 
     getEmail: function() {
-      var email = this.model.get({'email'});
+      var email = this.model.get('email');
       return email;
     },
 
     getPhone: function() {
-      var phone = this.model.get({'phone'});
+      var phone = this.model.get('phone');
       return phone;
     },
 
@@ -56,7 +55,7 @@ define(['model/Owner'], function(Owner){
           name: this.getName(),
           email: this.getEmail(),
           phone: this.getphone()
-        });
+        })
       );
     }
 
