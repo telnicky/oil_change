@@ -11,5 +11,5 @@ define([], function() {
     },
   });
 
-  return Vehicle;
+return Owner
 });
