@@ -9,6 +9,9 @@ define(['views/ListView','views/AppointmentItemView'], function(ListView, Appoin
     },
 
     build: function () {
+      var that = this;
+      this.items = this.getItems();
+
       this.thead = this.make('thead', {}, 
         '<tr>' +
           '<th>Begin</th>' +
@@ -17,28 +20,38 @@ define(['views/ListView','views/AppointmentItemView'], function(ListView, Appoin
           '<th>Vehicle</th>' +
         '</tr>'
       );
-
-      this.tbody = this.make('tbody');
-
+      
+      this.tbody = $(this.make('tbody'));
+      if(this.items.length == 0) {
+        var item = '<td>There are currently no appointments.</td>';
+        this.tbody.append(item);
+      } else {
+        _.each(this.items, function(item) {
+          that.tbody.append(item.el);
+        });
+      }
     },
 
     initialize: function () {
-      _.bindAll(this, 'render');
-      this.collection.bind('removeAppointment', this.render);
       this.build();
       this.render();
     },
 
-    render: function () {
-      var that = this,
-        items = this.getItems();
-      
-      _.each(items, function(item) {
-        that.tbody.appendChild(item.el);
-      });
+    onRemove: function (model, options) {
+      $('#' + model.get('id')).remove();
+      this.render();
+    },
 
+    render: function () {
+      // set html
       this.$el.html(this.tbody);
       this.el.insertBefore(this.thead, this.tbody);
+      
+      // bind events
+      this.collection.on('remove', this.onRemove, this);
+      _.each(this.items, function(item){
+        item.delegateEvents();
+      });
     }
 
   });

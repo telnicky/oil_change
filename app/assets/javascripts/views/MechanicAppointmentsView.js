@@ -1,7 +1,7 @@
 define(['views/AppointmentsView'], 
   function ( AppointmentsView ) {
     var MechanicAppointmentsView = AppointmentsView.extend({ 
-      className: 'mechanic-appointments table table-striped table-hover',
+      className: 'mechanic-appointments table table-striped table-hover table-condensed',
 
       getItems: function() {
         var that = this,

@@ -20,7 +20,7 @@ define([], function() {
     },
 
     initialize: function () {
-      this.bind('change', this.onChange);
+
     },
 
     getDate: function (date_string) {
@@ -31,10 +31,6 @@ define([], function() {
           minutes = date.getMinutes().toString(),
           formatted = month + '/' + day + ' ' + hours + ':' + minutes;
       return formatted;
-    },
-
-    onChange: function (model, options) {
-      this.trigger('removeAppointment', model, options);
     }
 
   });

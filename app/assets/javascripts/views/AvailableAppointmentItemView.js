@@ -23,7 +23,8 @@ define(['models/Mechanic','views/AppointmentItemView'],
       },
 
 
-      onAddAppointment: function (event) { 
+      onAddAppointment: function (event) {
+  console.log('CLICK ITEM EVENT');
         if(this.mechanic) {
           mechanic_id = this.mechanic.id;
           this.model.save({

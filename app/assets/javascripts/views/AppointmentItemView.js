@@ -64,6 +64,9 @@ define(['models/Vehicle'], function (Vehicle) {
           vehicle:    this.getVehicle() 
         })
       );
+
+      this.$el.attr('id', this.model.get('id'));
+      this.delegateEvents();
     }
 
   });

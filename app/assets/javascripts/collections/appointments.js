@@ -4,12 +4,13 @@ define(['models/Appointment'], function(Appointment) {
     url: '/appointments',
 
     initialize: function () {
-      this.bind('removeAppointment', this.onRemoveAppointment);
+      this.on('change:status', this.onChangeStatus, this);
     },
 
-    onRemoveAppointment: function (model, options) {
-console.log('remove appointment');
-      this.remove(model);
+    onChangeStatus: function (model, options) {
+      if(model.get('status') == 2) { // 2 is the reserved status
+        this.remove(model);
+      } 
     }
 
   });
