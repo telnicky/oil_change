@@ -8,9 +8,8 @@ define(['models/Appointment'], function(Appointment) {
     },
 
     onChangeStatus: function (model, options) {
-      if(model.get('status') == 2) { // 2 is the reserved status
-        this.remove(model);
-      } 
+      // appointments are in collections of same status
+      this.remove(model); 
     }
 
   });

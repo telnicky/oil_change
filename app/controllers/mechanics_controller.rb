@@ -27,8 +27,13 @@ class MechanicsController < ApplicationController
 
   def show
     @mechanic = Mechanic.find(params[:id])
-    @available_appointments = Appointment.find_all_by_status(1);
-    @json_data = { :available_appointments => @available_appointments, :mechanic => @mechanic }
+    @available_appointments = Appointment.find_all_by_status(1)
+    @current_appointments = @mechanic.appointments.where(:status => 2)
+    @complete_appointments = @mechanic.appointments.where(:status => 3)
+    @json_data = { :available_appointments => @available_appointments, 
+                   :complete_appointments => @complete_appointments,
+                   :current_appointments => @current_appointments,
+                   :mechanic => @mechanic }
     respond_with(@mechanic)
   end
 

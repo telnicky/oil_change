@@ -3,7 +3,7 @@ define(['models/Mechanic','views/AppointmentItemView'],
     var AvailableAppointmentItemView = AppointmentItemView.extend({
 
       events: {
-        'click .add-appointmnet': 'onAddAppointment'
+        'click .add-appointment': 'onAddAppointment'
       },
 
       template: _.template(
@@ -11,7 +11,7 @@ define(['models/Mechanic','views/AppointmentItemView'],
         '<td><%= ownerEnd %></td>' +
         '<td><%= location %></td>' +
         '<td><%= vehicle %></td>' +
-        '<td><i class="add-appointmnet icon-plus"></i></td>' 
+        '<td><i class="add-appointment icon-plus"></i></td>' 
 
       ),
 
@@ -24,7 +24,6 @@ define(['models/Mechanic','views/AppointmentItemView'],
 
 
       onAddAppointment: function (event) {
-  console.log('CLICK ITEM EVENT');
         if(this.mechanic) {
           mechanic_id = this.mechanic.id;
           this.model.save({
