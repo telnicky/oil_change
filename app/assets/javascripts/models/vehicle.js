@@ -13,8 +13,8 @@ define([], function() {
       'oil_type': '',
       'notes': '',
       'owner_id': undefined
-    },
+    }
+    
   });
-  
   return Vehicle;
 });

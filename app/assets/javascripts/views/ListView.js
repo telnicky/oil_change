@@ -7,7 +7,7 @@ define([], function() {
 
     getItems: function() {
       var that = this,
-        itemView = this.options.itemview,
+        itemView = this.options.itemView,
         items = [];
       
       if(itemView) {

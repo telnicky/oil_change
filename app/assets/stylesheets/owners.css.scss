@@ -30,7 +30,28 @@ th {
   border-bottom: 2px $lightgray inset;
   padding: 5px;
 }
+.owners-info-area {
 
+  div {
+    display: inline-block;
+    padding-top: 5px;
+  }
+  .user-name, .user-email, .user-phone, .user-name-form, .user-email-form, .user-phone-form {
+   padding-right: 5px;
+  }
+  input {
+    display: inline-block;
+    width: 75%;
+    border: none;
+    background: #E0E0E0;
+  }
+  .save-user-info {
+    display: none;
+  }
+  .user-name-form, .user-email-form, .user-phone-form {
+    display: none;
+  }
+}
 /********************* VEHICLE INFO *********************************************/
 .vehicle-list {
   margin: 10px;

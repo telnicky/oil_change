@@ -28,8 +28,6 @@ define([], function() {
           formatted = month + '/' + day + ' ' + hours + ':' + minutes;
       return formatted;
     }
-
   });
-  
   return Appointment;
 });

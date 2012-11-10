@@ -1,6 +1,6 @@
 define(['models/OwnerModel', 'models/Vehicle' ,'models/Appointment'], 
   function(OwnerModel, Vehicle, Appointment) { 
-    var OwnerAppItemView = Backbone.View.extend({ 
+    var OwnerAppointmentItemView = Backbone.View.extend({ 
       tagName: 'tr',
       className: 'appointment-item-view',
 
@@ -9,12 +9,12 @@ define(['models/OwnerModel', 'models/Vehicle' ,'models/Appointment'],
       },
 
       template: _.template(
-        '<td><%= status %></td>' +
+        '<tr><td><%= status %></td>' +
         '<td><%= date %></td>' +
         '<td><%= time %></td>' +
         '<td><%= vehicle %></td>' +
         '<td><%= mechanic %></td>' +
-        '<td><%= edit %></td>'
+        '<td><%= edit %></td></tr>'
       ),
 
       constructor: function OwnerAppItemView () {
@@ -23,13 +23,13 @@ define(['models/OwnerModel', 'models/Vehicle' ,'models/Appointment'],
 
       initialize: function() {
         var that = this;
-        this.appointment = new Appointment({id: this.model.get('id')})
+        this.appointment = new Appointment({id: this.model.get('owner_id')})
         this.appointment.fetch({
           success: function(model, response) {
             that.render();
           },
           failure: function(model, response) {
-            console.log('Failed to Fetch Appointment')
+            console.log('Failed to Fetch')
           }
         })
       },
@@ -48,11 +48,11 @@ define(['models/OwnerModel', 'models/Vehicle' ,'models/Appointment'],
       },
 
       getAppointmentDetails: function () {
-
+        //var appointment = this.model.get('appointment_id');
       },
 
       getOwnerDetails: function () {
-
+        var owner = this.model.get('id');
       },
 
       getVehicleDetails: function() {
@@ -63,5 +63,5 @@ define(['models/OwnerModel', 'models/Vehicle' ,'models/Appointment'],
         return make + ' ' + model + ' ' + plate;    
       },
   });
-  return OwnerAppItemView;
+  return OwnerAppointmentItemView;
 });
