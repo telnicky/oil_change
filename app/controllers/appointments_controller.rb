@@ -5,9 +5,17 @@ class AppointmentsController < ApplicationController
     @appointment = Appointment.new
   end
 
+  def index
+    @appointments = Appointment.all
+  end
+
+  def show
+    @appointments = Appointment.find(params[:id])
+  end  
+
   def concat_dates_to_datetime
       #combine two feilds, each containing a hash of values
-      hashed_start_date = (params[:owner_start_time]).merge (params[:owner_start_date])
+      hashed_start_date = (params[:owner_start_time]).merge(params[:owner_start_date])
        #create an empty string
        owner_start_date = []
        #get the values of the hash and concatenate into one string
@@ -18,7 +26,7 @@ class AppointmentsController < ApplicationController
         @owner_start_date = DateTime.new(owner_start_date[0],owner_start_date[1],owner_start_date[2],owner_start_date[3],owner_start_date[4])  
 
       #do the same thing as above for the owner_end_date
-      hashed_end_date =  (params[:owner_end_time]).merge (params[:owner_start_date])
+      hashed_end_date = (params[:owner_end_time]).merge(params[:owner_start_date])
         owner_end_date = []
           hashed_end_date.each_value do |value|
             owner_end_date << value.to_i

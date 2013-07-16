@@ -18,8 +18,11 @@ class OwnersController < ApplicationController
 
   def show
     @owner = Owner.find(params[:id])
+    
     @vehicles = @owner.vehicles
+
     @appointments = @owner.appointments
+    @json_owner_appointments = { :owners_appointments => @appointments }
   end
 
   def edit 

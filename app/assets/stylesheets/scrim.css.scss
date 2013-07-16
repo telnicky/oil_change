@@ -1,0 +1,24 @@
+.scrim-cover {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  left: 0px;
+  bottom: 0px;
+  background-color: rgba(255, 255, 255, .5);
+  z-index: 100;
+  .scrim-inner {
+    margin: 200px auto;
+    width: 350px;
+    border: 2px #626E7E solid;
+    background-color: white;
+    padding: 30px;
+    border-radius: 2px;
+    box-shadow: 4px 4px 3px #B3C7D5;
+  }
+  label {
+    display: inline-block;
+  }
+  input {
+    width: 275px;
+  }
+}

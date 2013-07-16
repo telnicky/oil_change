@@ -19,7 +19,9 @@
   <script> var require = {baseUrl: '/assets/'}; </script>
 
   <%= yield :header %>
-  <script> window.jsonData = <%= yield :json_data || 0 %>; </script>
+  <script> window.jsonDataOwnerInfo          =  <%= yield :json_data || 0 %>;               </script>
+  <script> window.jsonDataOwnersAppointments =  <%= yield :json_owner_appointments || 0 %>; </script>
+  <script> window.jsonDataOwnersVehicles     =  <%= yield :json_owner_vehicles || 0 %>;    </script>
 </head>
 
 <body>
@@ -27,7 +29,7 @@
     <div class="header"> 
       <div class="headerBody">
         <img src="/assets/car.png" />
-        <h3>Oil Mob</h3> 
+        <h3>Moboil</h3> 
         <div class="userInfo"> 
           <% if(owner_signed_in?) %>
             <%= link_to("#{current_owner.first_name} #{current_owner.last_name}", owner_path(current_owner)) %> |

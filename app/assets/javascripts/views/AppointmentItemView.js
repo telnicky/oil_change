@@ -30,7 +30,7 @@ define(['models/Vehicle'], function(Vehicle) {
         error: function(model, response) {
           console.log('Failed to Fetch');
         }
-      })
+      });
     },
 
     getLocation: function() {
@@ -44,7 +44,7 @@ define(['models/Vehicle'], function(Vehicle) {
 
     getVehicle: function() {
       var make = this.vehicle.get('make'),
-        model = this.vehicle.get('model')
+        model = this.vehicle.get('model');
 
       return make + ' ' + model;
     },
@@ -60,7 +60,7 @@ define(['models/Vehicle'], function(Vehicle) {
           ownerStart: this.model.getDate(this.model.get('owner_start')),
           ownerEnd:   this.model.getDate(this.model.get('owner_end')),
           location:   this.getLocation(),
-          vehicle:    this.getVehicle() 
+          vehicle:    this.getVehicle()
         })
       );
     }

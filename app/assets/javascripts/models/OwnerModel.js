@@ -1,6 +1,6 @@
-define([], function() { 
+define([], function() {
 
-  var Owner = Backbone.Model.extend({
+  var OwnerModel = Backbone.Model.extend({
     urlRoot: '/owners',
 
     defaults: {
@@ -9,7 +9,13 @@ define([], function() {
       'phone_number': '',
       'email': ''
     },
+
+    constructor: function OwnerModel () {
+      Backbone.Model.apply(this, arguments);
+    }
+
+
   });
 
-return Owner
+return OwnerModel;
 });

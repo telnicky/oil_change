@@ -1,10 +1,11 @@
 define(['views/iframe'], function(iframe) {
   var AddVehicleScrimView = Backbone.View.extend({
-    tagName: 'div',
     className: 'add-vehicle-view',
+    
     defaults: {
 
     },
+
     template: _.template(
       '<%= form %>' +
       '<div class="vehicle-form">' +
@@ -15,7 +16,7 @@ define(['views/iframe'], function(iframe) {
         '<div class="form-field"><input placeholder="Color" id="vehicle-color" ></input></div>' +
         '<div class="form-field"><input placeholder="License Plate" id="vehicle-license-plate" ></input></div>' +
         '<div class="form-field"><input placeholder="Vin Number" id="vehicle-vin-number" ></input></div>' +
-        '<div class="form-field"><label>Vehicle Oil Type</label><select placeholder="Oil Type" id="vehicle-oil-type" >' + 
+        '<div class="form-field"><label>Vehicle Oil Type</label><select placeholder="Oil Type" id="vehicle-oil-type" >' +
             '<option value="1" selected="selected">Regular</option>' +
             '<option value="2">Sythetic</option>' +
             '<option value="3">Other(See Note)</option></select></div>' +
@@ -29,7 +30,7 @@ define(['views/iframe'], function(iframe) {
       
     },
 
-    initialize: function() {   
+    initialize: function() {
       this.build();
     },
     
@@ -47,12 +48,12 @@ define(['views/iframe'], function(iframe) {
           notes: 'notes'
        })
       );
-    },
+    }
 
     
 
   });
-  return AddVehicleScrimView
+  return AddVehicleScrimView;
 });
 
 

@@ -1,34 +1,25 @@
 <% content_for :header do %>
   <%= javascript_include_tag 'require', 'data-main' => '/assets/main/owner'%>
-  <%= javascript_include_tag 'require', 'data-main' => '/assets/main/vehicles'%>
+  <%= javascript_include_tag 'require', 'data-main' => '/assets/main/vehicleMain'%>
+  <%= javascript_include_tag 'require', 'data-main' => '/assets/main/appointments'%>
 <% end %>
-<% content_for :json_data do %>
-  <%= json_escape(@owner.to_json).html_safe %>
-  <%= json_escape(@vehicle.to_json).html_safe %>
-<% end %>
+
+<% content_for :json_data do %>               <%= json_escape(@owner.to_json).html_safe %>                    <% end %>
+<% content_for :json_owner_appointments do %> <%= json_escape(@json_owner_appointments.to_json).html_safe %>  <% end %>
+<% content_for :json_owner_vehicles do %>     <%= json_escape(@vehicles.to_json).html_safe %>                 <% end %>
 
 <div class="content-wrapper">
   <div class="row welcome-user">  
     <div class="span3">
-
       <div class="owners-info-area"></div> 
-
     </div>
-  <div class="span8 show-appointments">
-    <div class="owners-appointment-list"></div>
-      
-      <%= render 'show_appointments' %>
     
+    <div class="span8 show-appointments">
+      <div class="owners-appointment-list"></div><%#= render 'show_appointments' %>
     </div>  
   </div>
+  
   <div class="row">
-    <div class="show-owners-vehicles"></div>
-      
-      <%= render 'show_vehicles' %>
-      <div class="adspace">
-   
-    </div>
+    <div class="show-owners-vehicles"></div><%#= render 'show_vehicles' %>
   </div> 
-</div> 
-
-<div class="owners-wrapper"></div> 
+</div>

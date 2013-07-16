@@ -1,4 +1,4 @@
-define(['models/OwnerModel', 'views/AddVehicleScrimView', 'models/Vehicle'], 
+define(['models/OwnerModel', 'views/AddVehicleScrimView', 'models/Vehicle'],
   function(OwnerModel, AddVehicleScrimView, vehicleModel){
     var OwnersInfoView = Backbone.View.extend({
       tagName: 'div',
@@ -15,16 +15,19 @@ define(['models/OwnerModel', 'views/AddVehicleScrimView', 'models/Vehicle'],
 
       template: _.template(
         '<h1>Welcome</h1>' +
-        '<div class="user-name">Name:' + '<span><%= name %></span>' + '</div>' +
-        '<div class="user-email">Email:' + '<span><%= email %></span>' + '</div>' +
-        '<div class="user-phone">Phone:' + '<span><%= phone %></span>' + '</div>' +
-          '<div class="user-name-form">Name:<input id="change-name" value ="' + '<%= name %>' + '"></input></div>' +
-          '<div class="user-email-form">Email:<input id="change-email" value="' + '<%= email %>' + '"></input></div>' +
-          '<div class="user-phone-form">Phone:<input id="change-phone" value="' + '<%= phone %>' + '"></input></div>' +
-        '<a class="btn btn-success btn-small btn-block add-vehicle">Add a Vehicle</a>' +
+        '<div class="user-name">Name: ' + '<span><%= name %></span>' + '</div>' +
+        '<div class="user-email">Email: ' + '<span><%= email %></span>' + '</div>' +
+        '<div class="user-phone">Phone: ' + '<span><%= phone %></span>' + '</div>' +
+        //Input fields - show when 'Edit User Info' is clicked
+        '<div class="user-name-form">Name:<input id="change-name" value ="' + '<%= name %>' + '"></input></div>' +
+        '<div class="user-email-form">Email:<input id="change-email" value="' + '<%= email %>' + '"></input></div>' +
+        '<div class="user-phone-form">Phone:<input id="change-phone" value="' + '<%= phone %>' + '"></input></div>' +
+        //Buttons to add vehicles, change owner info, manage payments
+        '<a class="btn btn-primary btn-small btn-block add-vehicle">Add a Vehicle</a>' +
         '<a class="btn btn-success btn-small btn-block edit-user-info">Edit User Info</a>' +
           '<a class="btn btn-success btn-small btn-block save-user-info">Save User Info</a>' +
         '<a class="btn btn-success btn-small btn-block manage-payments">Manage Payments</a>' +
+        //Scrim/Popup view for editing owner info without leaving the page - VIEW INCOMPLETE
         '<div class="scrim-info"></div>'
       ),
       
@@ -63,17 +66,17 @@ define(['models/OwnerModel', 'views/AddVehicleScrimView', 'models/Vehicle'],
         return phone;
       },
       
-      addVehicleScrim: function() {                     
+      addVehicleScrim: function() {
         var addVehicleView = new AddVehicleScrimView();
         $('.scrim-info').html(addVehicleView.el.innerHTML);
       },
 
       editUserInfoScrim: function() {
-        //hide user info 
+        //hide user info
         $('.add-vehicle, .edit-user-info, .manage-payments').hide();
         $('.user-name, .user-email, .user-phone').hide();
         //show user form
-        $('.user-name-form, .user-email-form, .user-phone-form').show()
+        $('.user-name-form, .user-email-form, .user-phone-form').show();
         $('.save-user-info').css('display', 'inline-block');
       },
 
@@ -83,7 +86,7 @@ define(['models/OwnerModel', 'views/AddVehicleScrimView', 'models/Vehicle'],
             phone =    $('#change-phone').val(),
             nameArray = this.splitFullName(fullName);
         var firstName = nameArray[0],
-            lastName =  nameArray[1]
+            lastName =  nameArray[1];
         this.model.save({email: newEmail, first_name: firstName, last_name: lastName, phone_number: phone});
         this.render();
       },
@@ -94,7 +97,7 @@ define(['models/OwnerModel', 'views/AddVehicleScrimView', 'models/Vehicle'],
       },
 
       managePaymentsScrim: function() {
-        console.log('managePaymentsScrim')
+        console.log('managePaymentsScrim');
       },
       
       clickSubmitForm: function() {
@@ -112,13 +115,13 @@ define(['models/OwnerModel', 'views/AddVehicleScrimView', 'models/Vehicle'],
         });
         console.log(vehicle);
 
-        vehicle.save(); 
-        $('.scrim-info').empty(); 
+        vehicle.save();
+        $('.scrim-info').empty();
       },
 
       clickCancelForm: function() {
         $('.scrim-info').empty();
       }
   });
-  return OwnersInfoView
+  return OwnersInfoView;
 });

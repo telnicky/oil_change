@@ -1,4 +1,4 @@
-define(['views/ListView','views/AppointmentItemView'], 
+define(['views/ListView','views/AppointmentItemView'],
   function(ListView, AppointmentItemView) {
     var AppointmentsView = ListView.extend({
 
@@ -10,7 +10,7 @@ define(['views/ListView','views/AppointmentItemView'],
       },
 
       build: function () {
-        this.thead = this.make('thead', {}, 
+        this.thead = this.make('thead', {},
           '<tr>' +
             '<th>Begin</th>' +
             '<th>End</th>' +

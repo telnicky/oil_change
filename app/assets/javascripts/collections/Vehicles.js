@@ -1,9 +1,15 @@
-define(['models/Vehicles'], function() {
+define(['models/Vehicle'], function(Vehicle) {
   
   var Vehicles = Backbone.Collection.extend({
-    model: Vehicles,
-    url: '/owners'
+    model: Vehicle,
+    url: '/vehicles',
+    
+    constructor: function Vehicles () {
+      Backbone.Collection.apply(this, arguments);
+    }
+
+
+
   });
-  
   return Vehicles;
 });

@@ -1,7 +1,7 @@
 define([], function() {
 
   var Appointment = Backbone.Model.extend({
-    urlRoot: '/appointments',
+    url: '/appointments',
 
     defaults: {
       'street': '',
